@@ -1,0 +1,91 @@
+table Instrument_Equity_CapitalInfo
+	lineageTag: 58866e47-041b-4a6e-8739-918b06969855
+	sourceLineageTag: [dbo].[Instrument_Equity_CapitalInfo]
+
+	column Instrument_GainID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: fb8fcb66-b41f-440a-a306-88a06069149f
+		sourceLineageTag: Instrument_GainID
+		summarizeBy: none
+		sourceColumn: Instrument_GainID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CirculatingShares
+		dataType: double
+		sourceProviderType: float
+		lineageTag: e53c923b-6616-4a69-ad4e-8fe568cfa806
+		sourceLineageTag: CirculatingShares
+		summarizeBy: none
+		sourceColumn: CirculatingShares
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a51f3a99-cd8d-4ec8-8279-2393807dafd5
+		sourceLineageTag: Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column IssuedShares
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 5f5bd9e5-d3ec-4e6f-b54b-c3037c3e5109
+		sourceLineageTag: IssuedShares
+		summarizeBy: none
+		sourceColumn: IssuedShares
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NomPerShare
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 18e63f0b-0446-4c3b-9682-0e52b7ceba7c
+		sourceLineageTag: NomPerShare
+		summarizeBy: none
+		sourceColumn: NomPerShare
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VotesPerShare
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 8bdc09c9-fa92-4c87-b297-fb22bad84682
+		sourceLineageTag: VotesPerShare
+		summarizeBy: none
+		sourceColumn: VotesPerShare
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MetaData_GoldUniqueId
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1e38fccd-3b3b-475c-bb17-78d28335def5
+		sourceLineageTag: MetaData_GoldUniqueId
+		summarizeBy: none
+		sourceColumn: MetaData_GoldUniqueId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Instrument_Equity_CapitalInfo = entity
+		mode: directLake
+		source
+			entityName: Instrument_Equity_CapitalInfo
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

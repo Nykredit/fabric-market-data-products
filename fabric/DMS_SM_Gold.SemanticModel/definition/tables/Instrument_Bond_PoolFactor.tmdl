@@ -1,0 +1,45 @@
+table Instrument_Bond_PoolFactor
+	lineageTag: 87db22a1-3a48-4ca3-8444-4957635908ff
+	sourceLineageTag: [dbo].[Instrument_Bond_PoolFactor]
+
+	column Instrument_GainID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 76cac524-7eea-495c-869e-c7ac8515f43a
+		sourceLineageTag: Instrument_GainID
+		summarizeBy: none
+		sourceColumn: Instrument_GainID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PoolFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 28dcfb24-9bec-4b7c-93ef-f28be77cdaf0
+		sourceLineageTag: PoolFactor
+		summarizeBy: none
+		sourceColumn: PoolFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MetaData_GoldUniqueId
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0f3677a9-440b-4c7c-81ac-70e49edcf60f
+		sourceLineageTag: MetaData_GoldUniqueId
+		summarizeBy: none
+		sourceColumn: MetaData_GoldUniqueId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Instrument_Bond_PoolFactor = entity
+		mode: directLake
+		source
+			entityName: Instrument_Bond_PoolFactor
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

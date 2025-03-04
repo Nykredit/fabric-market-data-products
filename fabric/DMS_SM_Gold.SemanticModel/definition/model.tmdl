@@ -1,0 +1,31 @@
+model Model
+	culture: en-US
+	collation: Latin1_General_100_BIN2_UTF8
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.141.7588.2 (Main)+d456e3d3aed26a8e6bb407d2027563577abbbc49
+
+annotation PBI_QueryOrder = ["DatabaseQuery"]
+
+annotation PBI_ProTooling = ["WebModelingEdit"]
+
+annotation __PBIService_Versioning_SaveVersion = fb6c9ff4-cd5c-4edf-ae2f-25318ac881b5
+
+ref table Instrument
+ref table Instrument_BusinessClassificationTimeSeries
+ref table Instrument_QuoteCurrency
+ref table Instrument_InstrumentIdentifiers
+ref table Instrument_Bond_CouponRate
+ref table Instrument_Bond_PutCall
+ref table Instrument_Bond_PoolFactor
+ref table Instrument_Equity_Dividend
+ref table Instrument_Equity_CapitalInfo
+
+ref cultureInfo en-US
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "DMS_RP_Import"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "bec2cc09-a89f-9397-4b10-c17959c4467e"
+  }
+}

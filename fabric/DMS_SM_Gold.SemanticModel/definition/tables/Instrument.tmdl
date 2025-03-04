@@ -1,0 +1,1444 @@
+table Instrument
+	lineageTag: c6a305cd-802c-478f-b1c2-de50f894b593
+	sourceLineageTag: [dbo].[Instrument]
+
+	column Active
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: af1b40d0-9dcc-4398-86e2-280d68dab22e
+		sourceLineageTag: Active
+		summarizeBy: none
+		sourceColumn: Active
+
+		annotation SummarizationSetBy = Automatic
+
+	column BlackListed
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 26124fa9-446e-4741-a4c9-dad2568132e0
+		sourceLineageTag: BlackListed
+		summarizeBy: none
+		sourceColumn: BlackListed
+
+		annotation SummarizationSetBy = Automatic
+
+	column BloombergCodeInfo
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 98c2d91f-1ea7-4753-a659-e9adb14d3d88
+		sourceLineageTag: BloombergCodeInfo
+		summarizeBy: none
+		sourceColumn: BloombergCodeInfo
+
+		annotation SummarizationSetBy = Automatic
+
+	column CFICode
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1f6d61ae-086e-4b07-9f77-ea84ffc7b3ca
+		sourceLineageTag: CFICode
+		summarizeBy: none
+		sourceColumn: CFICode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CINS
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3902485f-718f-40cc-ae9e-b8e11d786572
+		sourceLineageTag: CINS
+		summarizeBy: none
+		sourceColumn: CINS
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSIP
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2ac0bb30-73e0-4816-8ea5-484970ac4dc5
+		sourceLineageTag: CUSIP
+		summarizeBy: none
+		sourceColumn: CUSIP
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4a904f48-cd79-43f1-b079-8eed5db3c80a
+		sourceLineageTag: Category
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column CommonCode
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a9207f56-927c-4ff1-9111-e0753860f873
+		sourceLineageTag: CommonCode
+		summarizeBy: none
+		sourceColumn: CommonCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CompositeExchange
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f4760e56-5026-4dd3-a62a-ce0258bd0bba
+		sourceLineageTag: CompositeExchange
+		summarizeBy: none
+		sourceColumn: CompositeExchange
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d0667c7d-0105-4a22-96e9-2e244cbe9e84
+		sourceLineageTag: Country
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryOfDomicile
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 26b8808f-4c39-41e2-9a50-fce3ac6b8599
+		sourceLineageTag: CountryOfDomicile
+		summarizeBy: none
+		sourceColumn: CountryOfDomicile
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryOfIssue
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a3804313-d29d-430f-9807-b42626e4b993
+		sourceLineageTag: CountryOfIssue
+		summarizeBy: none
+		sourceColumn: CountryOfIssue
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryOfListing
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d81d891a-a57e-418d-beba-1566a9a23f2f
+		sourceLineageTag: CountryOfListing
+		summarizeBy: none
+		sourceColumn: CountryOfListing
+
+		annotation SummarizationSetBy = Automatic
+
+	column CsdrInstClassification
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7202ebf4-6269-499a-b20a-34157aa62870
+		sourceLineageTag: CsdrInstClassification
+		summarizeBy: none
+		sourceColumn: CsdrInstClassification
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 166c2d64-61c3-42c5-bc4e-0f291c2f6fac
+		sourceLineageTag: Currency
+		summarizeBy: none
+		sourceColumn: Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultCurrency
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: dbdc19cd-faff-45a2-9bc1-6cf6afb51fb5
+		sourceLineageTag: DefaultCurrency
+		summarizeBy: none
+		sourceColumn: DefaultCurrency
+
+		annotation SummarizationSetBy = Automatic
+
+	column DomesticForeign
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 159b66d2-d45a-4b2c-8483-72b0de57e57a
+		sourceLineageTag: DomesticForeign
+		summarizeBy: none
+		sourceColumn: DomesticForeign
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmergingMarketFlag
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 4bdcda2f-7eb5-478d-be53-79c407e20345
+		sourceLineageTag: EmergingMarketFlag
+		summarizeBy: none
+		sourceColumn: EmergingMarketFlag
+
+		annotation SummarizationSetBy = Automatic
+
+	column Exchange
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 31216806-c1a6-44a9-9d91-5e97092b7d6e
+		sourceLineageTag: Exchange
+		summarizeBy: none
+		sourceColumn: Exchange
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstTradeDate
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e879dbaa-2de9-4ca3-bd2b-1fc04b500c69
+		sourceLineageTag: FirstTradeDate
+		summarizeBy: none
+		sourceColumn: FirstTradeDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstTradingDate
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 76c99423-39ae-4742-9a52-883015fdc23f
+		sourceLineageTag: FirstTradingDate
+		summarizeBy: none
+		sourceColumn: FirstTradingDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column GainID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d9001222-bb1a-4c8d-a6a9-0c048ae69a31
+		sourceLineageTag: GainID
+		summarizeBy: none
+		sourceColumn: GainID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISIN
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1566ab78-0643-4b59-89a0-018811d53290
+		sourceLineageTag: ISIN
+		summarizeBy: none
+		sourceColumn: ISIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column IgnoredForIssuerESG
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 2d499808-29bc-42f8-8260-a30c0a839e38
+		sourceLineageTag: IgnoredForIssuerESG
+		summarizeBy: none
+		sourceColumn: IgnoredForIssuerESG
+
+		annotation SummarizationSetBy = Automatic
+
+	column InstrumentDataSource
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6bfd0f88-128c-48c1-994b-bc75f9258796
+		sourceLineageTag: InstrumentDataSource
+		summarizeBy: none
+		sourceColumn: InstrumentDataSource
+
+		annotation SummarizationSetBy = Automatic
+
+	column InstrumentGroup
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3415e6d6-e1bf-44f9-8701-3d4a4ac81ddd
+		sourceLineageTag: InstrumentGroup
+		summarizeBy: none
+		sourceColumn: InstrumentGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	column InstrumentType
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9f6003cb-d0ea-47f6-a6f8-dc027618cd80
+		sourceLineageTag: InstrumentType
+		summarizeBy: none
+		sourceColumn: InstrumentType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is144A
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 2f1a2108-3ad2-4ee8-acd9-9b4fd461041e
+		sourceLineageTag: Is144A
+		summarizeBy: none
+		sourceColumn: Is144A
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsRegS
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: e4eda5ca-b555-4abf-9965-e6ae5424093e
+		sourceLineageTag: IsRegS
+		summarizeBy: none
+		sourceColumn: IsRegS
+
+		annotation SummarizationSetBy = Automatic
+
+	column IssueDate
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e6f9bdc1-6404-4810-a01a-64fc700c54a5
+		sourceLineageTag: IssueDate
+		summarizeBy: none
+		sourceColumn: IssueDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column IssuePrice
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 4f20f78c-08e7-4b70-8106-597dfa53ab93
+		sourceLineageTag: IssuePrice
+		summarizeBy: sum
+		sourceColumn: IssuePrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Issuer
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5ffdd900-01da-46cb-92d8-898c260b6b92
+		sourceLineageTag: Issuer
+		summarizeBy: none
+		sourceColumn: Issuer
+
+		annotation SummarizationSetBy = Automatic
+
+	column IssuerPermID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9998c992-63d8-4133-95e4-9fe8d4eac569
+		sourceLineageTag: IssuerPermID
+		summarizeBy: none
+		sourceColumn: IssuerPermID
+
+		annotation SummarizationSetBy = Automatic
+
+	column LegNo
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: e82b4881-8bbf-4b1e-a1ad-7bea0cb61e28
+		sourceLineageTag: LegNo
+		summarizeBy: sum
+		sourceColumn: LegNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column LipperID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 529fd8b3-5265-49b6-ab37-59f87eb38236
+		sourceLineageTag: LipperID
+		summarizeBy: none
+		sourceColumn: LipperID
+
+		annotation SummarizationSetBy = Automatic
+
+	column LiquidityIndicator
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: da909cac-30d5-4a3b-a5eb-df34ce73435d
+		sourceLineageTag: LiquidityIndicator
+		summarizeBy: none
+		sourceColumn: LiquidityIndicator
+
+		annotation SummarizationSetBy = Automatic
+
+	column ListingStatus
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c45d5f45-eb26-43eb-b305-584ee8c7cd9f
+		sourceLineageTag: ListingStatus
+		summarizeBy: none
+		sourceColumn: ListingStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column LongName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 08e88977-9cab-4327-9b04-6560cdcc89f7
+		sourceLineageTag: LongName
+		summarizeBy: none
+		sourceColumn: LongName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LongReportingSecurityName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4b1c3cb1-90d4-498d-bb2a-c6ba049d049d
+		sourceLineageTag: LongReportingSecurityName
+		summarizeBy: none
+		sourceColumn: LongReportingSecurityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LongSecurityName1
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d75a70ce-8bab-468d-b2b5-c21af0c08a6b
+		sourceLineageTag: LongSecurityName1
+		summarizeBy: none
+		sourceColumn: LongSecurityName1
+
+		annotation SummarizationSetBy = Automatic
+
+	column MICList
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9ca2dcbd-5be4-4b67-87a9-9c3f0e993197
+		sourceLineageTag: MICList
+		summarizeBy: none
+		sourceColumn: MICList
+
+		annotation SummarizationSetBy = Automatic
+
+	column MainIndexRIC
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: fd85a24d-f8f5-4a6b-a2b9-9cb76ca663f5
+		sourceLineageTag: MainIndexRIC
+		summarizeBy: none
+		sourceColumn: MainIndexRIC
+
+		annotation SummarizationSetBy = Automatic
+
+	column MicCode
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2b563f86-03c7-4752-8d15-029bb078c2fa
+		sourceLineageTag: MicCode
+		summarizeBy: none
+		sourceColumn: MicCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column NykrQuotationMode
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: bf3df296-680d-43b1-aded-500ea047229b
+		sourceLineageTag: NykrQuotationMode
+		summarizeBy: none
+		sourceColumn: NykrQuotationMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column OpenDate
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c1cf4ae5-0017-4bb4-ad56-ae2733e0aded
+		sourceLineageTag: OpenDate
+		summarizeBy: none
+		sourceColumn: OpenDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column PriceUnit
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6ba61b25-5d2e-4dce-a034-6c594772462b
+		sourceLineageTag: PriceUnit
+		summarizeBy: none
+		sourceColumn: PriceUnit
+
+		annotation SummarizationSetBy = Automatic
+
+	column PricingInstrumentCode
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1788ba69-eaa0-46f8-951b-5e329780575c
+		sourceLineageTag: PricingInstrumentCode
+		summarizeBy: none
+		sourceColumn: PricingInstrumentCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuotePermID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: bd636919-44ad-4cfe-84b9-1d99a603f290
+		sourceLineageTag: QuotePermID
+		summarizeBy: none
+		sourceColumn: QuotePermID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quoted
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 56e21147-d2a2-4296-8438-41d10032eaef
+		sourceLineageTag: Quoted
+		summarizeBy: none
+		sourceColumn: Quoted
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReutersAssetId
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1d8796ce-9eb4-4e65-963a-66764dd70084
+		sourceLineageTag: ReutersAssetId
+		summarizeBy: none
+		sourceColumn: ReutersAssetId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReutersExchangeCode
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0cf2dc49-845c-4fc5-b410-779773816a8f
+		sourceLineageTag: ReutersExchangeCode
+		summarizeBy: none
+		sourceColumn: ReutersExchangeCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReutersQuoteId
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 82990604-b562-4a4d-9656-4692104f1b32
+		sourceLineageTag: ReutersQuoteId
+		summarizeBy: none
+		sourceColumn: ReutersQuoteId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReutersRIC
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4913efe6-a9b0-48dc-b7df-c30734f97a81
+		sourceLineageTag: ReutersRIC
+		summarizeBy: none
+		sourceColumn: ReutersRIC
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReutersTickerCode
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d6f06c17-fd49-4985-9cfc-604a09dc7655
+		sourceLineageTag: ReutersTickerCode
+		summarizeBy: none
+		sourceColumn: ReutersTickerCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column SEDOL
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: cbd727ed-7617-4630-b540-e6daed5b0832
+		sourceLineageTag: SEDOL
+		summarizeBy: none
+		sourceColumn: SEDOL
+
+		annotation SummarizationSetBy = Automatic
+
+	column SecurityID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 633828ac-058d-42e9-92f9-5dd53b99867e
+		sourceLineageTag: SecurityID
+		summarizeBy: none
+		sourceColumn: SecurityID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SecurityName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 42eba1ab-16f7-4efd-847a-821db45c4422
+		sourceLineageTag: SecurityName
+		summarizeBy: none
+		sourceColumn: SecurityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column SecuritySerialNo
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: da9efdbe-fa18-4243-b2da-8d2f500a814e
+		sourceLineageTag: SecuritySerialNo
+		summarizeBy: none
+		sourceColumn: SecuritySerialNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column SettlementCalendarCode
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2cef7952-3a2c-4598-a1c1-27e052a818e4
+		sourceLineageTag: SettlementCalendarCode
+		summarizeBy: none
+		sourceColumn: SettlementCalendarCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShortName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9cf0c910-87ce-4e6d-9d18-55a640933f5d
+		sourceLineageTag: ShortName
+		summarizeBy: none
+		sourceColumn: ShortName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShortReportingSecurityName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: dee25ec8-307b-40cb-a3a9-30f899660cbc
+		sourceLineageTag: ShortReportingSecurityName
+		summarizeBy: none
+		sourceColumn: ShortReportingSecurityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column SixCode
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 02eaaafa-155f-43a9-baa7-ae538230a26f
+		sourceLineageTag: SixCode
+		summarizeBy: none
+		sourceColumn: SixCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxCountry
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9258b834-45f6-470f-8e58-3ac2da33f35a
+		sourceLineageTag: TaxCountry
+		summarizeBy: none
+		sourceColumn: TaxCountry
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ticker
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 75d557e2-a942-4a0e-a592-9948016c85e4
+		sourceLineageTag: Ticker
+		summarizeBy: none
+		sourceColumn: Ticker
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValorNumber
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: df44d36d-e066-4fe7-a10d-dd461d1c5fd6
+		sourceLineageTag: ValorNumber
+		summarizeBy: none
+		sourceColumn: ValorNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Volume
+		dataType: double
+		sourceProviderType: float
+		lineageTag: f755020a-4df2-4509-bffe-30702621580a
+		sourceLineageTag: Volume
+		summarizeBy: sum
+		sourceColumn: Volume
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WPK
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 8b8bbd84-3d49-42cb-b159-33628201a2c9
+		sourceLineageTag: WPK
+		summarizeBy: none
+		sourceColumn: WPK
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetaData_ChangeType
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f3c7409a-92c9-46f8-bd07-8dbab8f4cf2f
+		sourceLineageTag: MetaData_ChangeType
+		summarizeBy: none
+		sourceColumn: MetaData_ChangeType
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetaData_BronzeCreatedAt
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e327f350-8d8f-4f8d-a326-5f4c9eb1df18
+		sourceLineageTag: MetaData_BronzeCreatedAt
+		summarizeBy: none
+		sourceColumn: MetaData_BronzeCreatedAt
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetaData_SilverCreatedAt
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 09a11752-0da7-4f30-b383-c8f2ad1eed01
+		sourceLineageTag: MetaData_SilverCreatedAt
+		summarizeBy: none
+		sourceColumn: MetaData_SilverCreatedAt
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetaData_Model
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7003809b-e325-4697-92ee-9a53dbb49070
+		sourceLineageTag: MetaData_Model
+		summarizeBy: none
+		sourceColumn: MetaData_Model
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetaData_PublicationDate
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 18e48873-f71f-4009-8fd1-a766e847ba5c
+		sourceLineageTag: MetaData_PublicationDate
+		summarizeBy: none
+		sourceColumn: MetaData_PublicationDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetaData_Type
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 49a4ace6-ca7b-4fa9-89de-3a864816c384
+		sourceLineageTag: MetaData_Type
+		summarizeBy: none
+		sourceColumn: MetaData_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_AccruedInterestDayCount
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5c13e741-c616-41c2-9088-ca1fb3b49f89
+		sourceLineageTag: Bond_AccruedInterestDayCount
+		summarizeBy: none
+		sourceColumn: Bond_AccruedInterestDayCount
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_AccruedInterestDays
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 8e5c81c8-7260-43ce-8207-5ef2361eeacc
+		sourceLineageTag: Bond_AccruedInterestDays
+		summarizeBy: sum
+		sourceColumn: Bond_AccruedInterestDays
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_AccruedInterestMethod
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 706cbbb1-3ec1-4cd5-82de-c7af97215ce7
+		sourceLineageTag: Bond_AccruedInterestMethod
+		summarizeBy: none
+		sourceColumn: Bond_AccruedInterestMethod
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_AccruedInterestType
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1c3b4295-8aa4-491f-816c-9005988d605b
+		sourceLineageTag: Bond_AccruedInterestType
+		summarizeBy: none
+		sourceColumn: Bond_AccruedInterestType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_BusinessDaysConvention
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 493604dc-7e01-4818-9aa0-eaf228ba11b1
+		sourceLineageTag: Bond_BusinessDaysConvention
+		summarizeBy: none
+		sourceColumn: Bond_BusinessDaysConvention
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_CalendarForDelayDays
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f127e160-c8ae-4605-9d21-dbba55c6a6ff
+		sourceLineageTag: Bond_CalendarForDelayDays
+		summarizeBy: none
+		sourceColumn: Bond_CalendarForDelayDays
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_CallableMbs
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 565e1df3-b812-4d62-ae96-64e060203689
+		sourceLineageTag: Bond_CallableMbs
+		summarizeBy: none
+		sourceColumn: Bond_CallableMbs
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_CouponBase
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 790248b2-5561-47e9-bffe-4e8fa5812e0b
+		sourceLineageTag: Bond_CouponBase
+		summarizeBy: none
+		sourceColumn: Bond_CouponBase
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_CouponBaseAccrued
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 836b162b-7e13-43ba-a4f6-4df695c06d0d
+		sourceLineageTag: Bond_CouponBaseAccrued
+		summarizeBy: none
+		sourceColumn: Bond_CouponBaseAccrued
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_CouponBaseOdd
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 73bbac56-d3e7-4a78-abb7-b26fc8eea898
+		sourceLineageTag: Bond_CouponBaseOdd
+		summarizeBy: none
+		sourceColumn: Bond_CouponBaseOdd
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_CouponDayCount
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 910870c9-df6a-45d7-828c-88607d9cc7c5
+		sourceLineageTag: Bond_CouponDayCount
+		summarizeBy: none
+		sourceColumn: Bond_CouponDayCount
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_CouponFromDate
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a5d9f0cb-72ce-4f6d-bf1d-26301459c185
+		sourceLineageTag: Bond_CouponFromDate
+		summarizeBy: none
+		sourceColumn: Bond_CouponFromDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_CouponPaymentType
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5eb21d62-f139-494c-91fa-46ee377dc7e1
+		sourceLineageTag: Bond_CouponPaymentType
+		summarizeBy: none
+		sourceColumn: Bond_CouponPaymentType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_CouponRateMinimum
+		dataType: double
+		sourceProviderType: float
+		lineageTag: a485b3dd-8dac-4856-85ae-3429a686d77d
+		sourceLineageTag: Bond_CouponRateMinimum
+		summarizeBy: sum
+		sourceColumn: Bond_CouponRateMinimum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_CouponTermLength
+		dataType: double
+		sourceProviderType: float
+		lineageTag: ed99574b-4a45-4adc-a01c-3e7e10db8f2a
+		sourceLineageTag: Bond_CouponTermLength
+		summarizeBy: sum
+		sourceColumn: Bond_CouponTermLength
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_CouponTermUnit
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3a886706-b0d1-4555-bb11-e9191678dded
+		sourceLineageTag: Bond_CouponTermUnit
+		summarizeBy: none
+		sourceColumn: Bond_CouponTermUnit
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_DayCountExCoupon
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9a4ed049-2a5a-4ff5-a2d8-92cd77473416
+		sourceLineageTag: Bond_DayCountExCoupon
+		summarizeBy: none
+		sourceColumn: Bond_DayCountExCoupon
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_DayCountFixingDays
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d3956dbd-a356-43ee-bf7d-8c02aec66880
+		sourceLineageTag: Bond_DayCountFixingDays
+		summarizeBy: none
+		sourceColumn: Bond_DayCountFixingDays
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_DayCountPutCall
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b2c9c4de-38d8-44ef-8b37-96f262627f20
+		sourceLineageTag: Bond_DayCountPutCall
+		summarizeBy: none
+		sourceColumn: Bond_DayCountPutCall
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_DelayDays
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 0ab87371-5918-4504-8095-fef5188e44d3
+		sourceLineageTag: Bond_DelayDays
+		summarizeBy: sum
+		sourceColumn: Bond_DelayDays
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_DiscountingConvention
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: aa1a9fb9-58ef-4616-913c-96b88dfb13b0
+		sourceLineageTag: Bond_DiscountingConvention
+		summarizeBy: none
+		sourceColumn: Bond_DiscountingConvention
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_EndOfMonthConvention
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7b68b520-5e4b-4d75-bfbc-f5f6a8497094
+		sourceLineageTag: Bond_EndOfMonthConvention
+		summarizeBy: none
+		sourceColumn: Bond_EndOfMonthConvention
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_ExCouponDays
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 36eae21b-7afd-49dc-b2d1-b2ec360a1488
+		sourceLineageTag: Bond_ExCouponDays
+		summarizeBy: sum
+		sourceColumn: Bond_ExCouponDays
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_ExRedemptionDays
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 1c79c551-d20e-4f17-a8d0-9926c871ec81
+		sourceLineageTag: Bond_ExRedemptionDays
+		summarizeBy: sum
+		sourceColumn: Bond_ExRedemptionDays
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_ExpectedInflationRate
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 6a233d0c-38d9-4ac4-a833-628948dee350
+		sourceLineageTag: Bond_ExpectedInflationRate
+		summarizeBy: sum
+		sourceColumn: Bond_ExpectedInflationRate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_FaceValue
+		dataType: double
+		sourceProviderType: float
+		lineageTag: c74e5b99-4580-4bb5-a35e-66708f31722b
+		sourceLineageTag: Bond_FaceValue
+		summarizeBy: sum
+		sourceColumn: Bond_FaceValue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_FinalMaturityDate
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a2810881-9367-4432-85e7-9045f5456784
+		sourceLineageTag: Bond_FinalMaturityDate
+		summarizeBy: none
+		sourceColumn: Bond_FinalMaturityDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_FirstCouponPayment
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3b923776-e4b9-4fdf-9e7d-05ee263a6434
+		sourceLineageTag: Bond_FirstCouponPayment
+		summarizeBy: none
+		sourceColumn: Bond_FirstCouponPayment
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_FirstFixing
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 3aa0ee3d-597e-4ecb-ad02-118e931a878d
+		sourceLineageTag: Bond_FirstFixing
+		summarizeBy: sum
+		sourceColumn: Bond_FirstFixing
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_FixedRateDecompounding
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f8829a1b-b619-45b4-9c1e-50d1a44c5628
+		sourceLineageTag: Bond_FixedRateDecompounding
+		summarizeBy: none
+		sourceColumn: Bond_FixedRateDecompounding
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_HolidayAdjustCoupons
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 8e4f7be3-4a85-4e13-9d2c-40ebca5d9c9e
+		sourceLineageTag: Bond_HolidayAdjustCoupons
+		summarizeBy: none
+		sourceColumn: Bond_HolidayAdjustCoupons
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_InclExclPlus1Day
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 89a1d546-f9c9-499f-96cf-d3d67c3980f8
+		sourceLineageTag: Bond_InclExclPlus1Day
+		summarizeBy: none
+		sourceColumn: Bond_InclExclPlus1Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_IndexTimeLagLength
+		dataType: double
+		sourceProviderType: float
+		lineageTag: bb158234-5651-43c0-ac3b-691d03303f8c
+		sourceLineageTag: Bond_IndexTimeLagLength
+		summarizeBy: sum
+		sourceColumn: Bond_IndexTimeLagLength
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_InterestAdjustmentFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 23bde930-7f9b-4fb7-8751-f103f8949767
+		sourceLineageTag: Bond_InterestAdjustmentFactor
+		summarizeBy: sum
+		sourceColumn: Bond_InterestAdjustmentFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_InterestFixingDays
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 12db085c-e73e-4ec0-9628-c52433b867ba
+		sourceLineageTag: Bond_InterestFixingDays
+		summarizeBy: sum
+		sourceColumn: Bond_InterestFixingDays
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_InterestRate
+		dataType: double
+		sourceProviderType: float
+		lineageTag: ed10ab44-e193-4bdc-82b1-512b38adca20
+		sourceLineageTag: Bond_InterestRate
+		summarizeBy: sum
+		sourceColumn: Bond_InterestRate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_InterestType
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0c39f899-a262-4f30-a911-2d5f8e508fb1
+		sourceLineageTag: Bond_InterestType
+		summarizeBy: none
+		sourceColumn: Bond_InterestType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_IssuedVolume
+		dataType: double
+		sourceProviderType: float
+		lineageTag: c527c238-0c18-458d-a93c-1bc47d4d5514
+		sourceLineageTag: Bond_IssuedVolume
+		summarizeBy: sum
+		sourceColumn: Bond_IssuedVolume
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_LotSize
+		dataType: double
+		sourceProviderType: float
+		lineageTag: ae48cc98-15f6-4cb4-a8ea-0801a61560a6
+		sourceLineageTag: Bond_LotSize
+		summarizeBy: sum
+		sourceColumn: Bond_LotSize
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_MinimumTradeVolume
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 23ea4458-78e9-4d88-8f86-1f460ce998bd
+		sourceLineageTag: Bond_MinimumTradeVolume
+		summarizeBy: sum
+		sourceColumn: Bond_MinimumTradeVolume
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_OddConvLastCoupon
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: de042059-1370-430a-98d5-69c1c8c49f00
+		sourceLineageTag: Bond_OddConvLastCoupon
+		summarizeBy: none
+		sourceColumn: Bond_OddConvLastCoupon
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_OddConvLastRedemption
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: dbb3edee-b9d6-4a2e-bfcb-87b654352aef
+		sourceLineageTag: Bond_OddConvLastRedemption
+		summarizeBy: none
+		sourceColumn: Bond_OddConvLastRedemption
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_PriceDifferenceIfAdjust
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 4175fc3f-e845-4905-b05f-6eb109b11a5e
+		sourceLineageTag: Bond_PriceDifferenceIfAdjust
+		summarizeBy: sum
+		sourceColumn: Bond_PriceDifferenceIfAdjust
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_QuoteFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 434089dc-9e02-400f-9c75-386554a92185
+		sourceLineageTag: Bond_QuoteFactor
+		summarizeBy: sum
+		sourceColumn: Bond_QuoteFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_Quotedecimals
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 921cb677-a07f-4a34-972e-ce3ec3c0f7c2
+		sourceLineageTag: Bond_Quotedecimals
+		summarizeBy: sum
+		sourceColumn: Bond_Quotedecimals
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_RedemptionPrice
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 87b73854-4553-4f5c-ab4e-b5862e53cc77
+		sourceLineageTag: Bond_RedemptionPrice
+		summarizeBy: sum
+		sourceColumn: Bond_RedemptionPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_RedemptionTermLength
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 0bfbf4f1-1636-440f-b8e0-c6f7adc17762
+		sourceLineageTag: Bond_RedemptionTermLength
+		summarizeBy: sum
+		sourceColumn: Bond_RedemptionTermLength
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_RedemptionTermUnit
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 56db149b-b73c-4752-8fa2-43f8e4649345
+		sourceLineageTag: Bond_RedemptionTermUnit
+		summarizeBy: none
+		sourceColumn: Bond_RedemptionTermUnit
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_ReferenceRate
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e8d03613-bcd8-464f-aae7-aa8950cda18f
+		sourceLineageTag: Bond_ReferenceRate
+		summarizeBy: none
+		sourceColumn: Bond_ReferenceRate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_RegisteredHolder
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 8ae811ed-fdd5-44c0-a7e2-4af7de1403fc
+		sourceLineageTag: Bond_RegisteredHolder
+		summarizeBy: none
+		sourceColumn: Bond_RegisteredHolder
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_SettlementDays
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 29f0c1d2-dbf9-4ca8-915e-dcafcbe46d47
+		sourceLineageTag: Bond_SettlementDays
+		summarizeBy: sum
+		sourceColumn: Bond_SettlementDays
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_SpreadRate
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 77bb1707-83c8-4ac3-80ff-ca1a361f7172
+		sourceLineageTag: Bond_SpreadRate
+		summarizeBy: sum
+		sourceColumn: Bond_SpreadRate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_Structure
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d420c79e-2d6e-4b31-b4d0-0db6662c2870
+		sourceLineageTag: Bond_Structure
+		summarizeBy: none
+		sourceColumn: Bond_Structure
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bond_YieldBetaAssumption
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 84ec6b58-8b50-467e-bf3b-5428989f3efb
+		sourceLineageTag: Bond_YieldBetaAssumption
+		summarizeBy: sum
+		sourceColumn: Bond_YieldBetaAssumption
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bond_YtmConvention
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2842fc61-fbe4-4ab4-801b-7cd9e899c802
+		sourceLineageTag: Bond_YtmConvention
+		summarizeBy: none
+		sourceColumn: Bond_YtmConvention
+
+		annotation SummarizationSetBy = Automatic
+
+	column Equity_DefaultQuotationCurrency
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7794928e-e0e4-4783-a2cc-be08f222ed33
+		sourceLineageTag: Equity_DefaultQuotationCurrency
+		summarizeBy: none
+		sourceColumn: Equity_DefaultQuotationCurrency
+
+		annotation SummarizationSetBy = Automatic
+
+	column Equity_LotSize
+		dataType: double
+		sourceProviderType: float
+		lineageTag: d6aa773d-5d74-47c0-b1af-704106c31eb9
+		sourceLineageTag: Equity_LotSize
+		summarizeBy: sum
+		sourceColumn: Equity_LotSize
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Equity_MinimumTradeVolume
+		dataType: double
+		sourceProviderType: float
+		lineageTag: ab2406a3-b7ab-4672-9647-8ef43ce02cb9
+		sourceLineageTag: Equity_MinimumTradeVolume
+		summarizeBy: sum
+		sourceColumn: Equity_MinimumTradeVolume
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Equity_Quotation
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3748a066-9e95-4593-893f-df270b9ec268
+		sourceLineageTag: Equity_Quotation
+		summarizeBy: none
+		sourceColumn: Equity_Quotation
+
+		annotation SummarizationSetBy = Automatic
+
+	column Equity_QuoteFactor
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 80f61571-47d6-4837-9e9b-c358e1fd1c37
+		sourceLineageTag: Equity_QuoteFactor
+		summarizeBy: sum
+		sourceColumn: Equity_QuoteFactor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Equity_QuoteType
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 610c9cdc-549b-41f7-a761-3328913699bf
+		sourceLineageTag: Equity_QuoteType
+		summarizeBy: none
+		sourceColumn: Equity_QuoteType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Equity_SettlementDays
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 298f4953-115d-40ab-aed9-66a73e71b161
+		sourceLineageTag: Equity_SettlementDays
+		summarizeBy: sum
+		sourceColumn: Equity_SettlementDays
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetaData_GoldCreatedAt
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 9062c6d2-da0e-491a-bbdf-cc179be589b2
+		sourceLineageTag: MetaData_GoldCreatedAt
+		summarizeBy: none
+		sourceColumn: MetaData_GoldCreatedAt
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Instrument = entity
+		mode: directLake
+		source
+			entityName: Instrument
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

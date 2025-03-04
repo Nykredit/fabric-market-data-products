@@ -1,0 +1,69 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.61\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":0,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{\"filterSortOrder\":3}",
+      "displayName": "import",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"509b4342560d25c2c0b0\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Instrument\"}},\"Property\":\"LongName\"}},\"type\":\"Categorical\",\"howCreated\":1,\"ordinal\":0},{\"name\":\"95e27da5f6d96e8ffaac\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Instrument\"}},\"Property\":\"ShortName\"}},\"type\":\"Categorical\",\"howCreated\":1,\"ordinal\":1},{\"name\":\"69dd1096739bc4b55ba8\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Instrument\"}},\"Property\":\"GainID\"}},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{},\"ordinal\":2},{\"name\":\"7d03a7edb3b48cc1a533\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Instrument\"}},\"Property\":\"MetaData_GoldCreatedAt\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"Instrument\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"MetaData_GoldCreatedAt\"}},\"Right\":{\"DateSpan\":{\"Expression\":{\"Now\":{}},\"TimeUnit\":0}}}}}]},\"type\":\"RelativeDate\",\"howCreated\":1,\"displayName\":\"Imported\",\"ordinal\":3}]",
+      "height": 720.00,
+      "name": "58bf04813e34de281ce8",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"01dc5b29bcfffe487e63\",\"layouts\":[{\"id\":0,\"position\":{\"x\":986.8193649141073,\"y\":479.0838105153566,\"z\":4000,\"width\":293.1806350858928,\"height\":241.20770432066632,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Instrument.MetaData_ChangeType\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Instrument.MetaData_ChangeType)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"Instrument\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"MetaData_ChangeType\"},\"Name\":\"Instrument.MetaData_ChangeType\",\"NativeReferenceName\":\"Change Type\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"MetaData_ChangeType\"}},\"Function\":5},\"Name\":\"CountNonNull(Instrument.MetaData_ChangeType)\",\"NativeReferenceName\":\"Type\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"MetaData_ChangeType\"}},\"Function\":5}}}]},\"columnProperties\":{\"CountNonNull(Instrument.MetaData_ChangeType)\":{\"displayName\":\"Type\"},\"Instrument.MetaData_ChangeType\":{\"displayName\":\"Change Type\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"legend\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 241.21,
+          "width": 293.18,
+          "x": 986.82,
+          "y": 479.08,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"0da9e89406048a89e14f\",\"layouts\":[{\"id\":0,\"position\":{\"x\":986.8193649141073,\"y\":347.81884435190005,\"z\":2000,\"width\":293.1806350858928,\"height\":123.269130661114,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Min(Instrument.GainID)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"Instrument\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"GainID\"}},\"Function\":5},\"Name\":\"Min(Instrument.GainID)\",\"NativeReferenceName\":\"Count of GainID\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"GainID\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Totalt Imports'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 123.27,
+          "width": 293.18,
+          "x": 986.82,
+          "y": 347.82,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"645239eab0bd6d28fb9c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":0,\"width\":1280,\"height\":222.18009478672985,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Instrument.MetaData_GoldCreatedAt\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Instrument.MetaData_GoldCreatedAt)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"Instrument\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"MetaData_GoldCreatedAt\"},\"Name\":\"Instrument.MetaData_GoldCreatedAt\",\"NativeReferenceName\":\"Imported\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"MetaData_GoldCreatedAt\"}},\"Function\":5},\"Name\":\"CountNonNull(Instrument.MetaData_GoldCreatedAt)\",\"NativeReferenceName\":\"Imported1\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"MetaData_GoldCreatedAt\"}}}]},\"columnProperties\":{\"Instrument.MetaData_GoldCreatedAt\":{\"displayName\":\"Imported\"},\"CountNonNull(Instrument.MetaData_GoldCreatedAt)\":{\"displayName\":\"Imported\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"categoryAxis\":[{\"properties\":{\"axisType\":{\"expr\":{\"Literal\":{\"Value\":\"'Scalar'\"}}},\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"valueAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Import Timeline'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 222.18,
+          "width": 1280.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"7fcd11f1ed35b1317a3d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":221.8844351900052,\"z\":1000,\"width\":965.4971369078605,\"height\":498.40707964601773,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Instrument.GainID\"},{\"queryRef\":\"Instrument.ShortName\"},{\"queryRef\":\"Instrument.MetaData_GoldCreatedAt\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"Instrument\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"GainID\"},\"Name\":\"Instrument.GainID\",\"NativeReferenceName\":\"GainID\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"MetaData_GoldCreatedAt\"},\"Name\":\"Instrument.MetaData_GoldCreatedAt\",\"NativeReferenceName\":\"Imported\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"ShortName\"},\"Name\":\"Instrument.ShortName\",\"NativeReferenceName\":\"Name\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"MetaData_GoldCreatedAt\"}}}]},\"columnProperties\":{\"Instrument.MetaData_GoldCreatedAt\":{\"displayName\":\"Imported\"},\"Instrument.ShortName\":{\"displayName\":\"Name\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"146.13743353665922D\"}}}},\"selector\":{\"metadata\":\"Instrument.GainID\"}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"599.4332724920865D\"}}}},\"selector\":{\"metadata\":\"Instrument.ShortName\"}}],\"values\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"9D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 498.41,
+          "width": 965.50,
+          "x": 0.00,
+          "y": 221.88,
+          "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

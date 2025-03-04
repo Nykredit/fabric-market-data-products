@@ -1,0 +1,32 @@
+relationship 773815ad-0f0e-a611-288d-1c43b7a8e6e1
+	fromColumn: Instrument.GainID
+	toColumn: Instrument_Bond_CouponRate.Instrument_GainID
+
+relationship 06c63314-9ee6-4449-c0dc-4fddb07b7841
+	fromColumn: Instrument.GainID
+	toColumn: Instrument_Bond_PutCall.Instrument_GainID
+
+relationship 7e30f413-4d84-ef2a-9300-5f07f4b807c4
+	fromColumn: Instrument.GainID
+	toColumn: Instrument_QuoteCurrency.Instrument_GainID
+
+relationship 016e74f0-3e49-2925-6965-c4f80f4327f9
+	fromColumn: Instrument.GainID
+	toColumn: Instrument_Equity_CapitalInfo.Instrument_GainID
+
+relationship 26b36b4b-e4ee-2f62-e3a6-2f37a1d80865
+	fromColumn: Instrument.GainID
+	toColumn: Instrument_Equity_Dividend.Instrument_GainID
+
+relationship 20a32fb5-ee24-9e6c-6fa0-eda0f2a24d21
+	fromColumn: Instrument.GainID
+	toColumn: Instrument_InstrumentIdentifiers.Instrument_GainID
+
+relationship 3cc86400-adb3-e8bf-bdfc-9a8348e435bc
+	fromColumn: Instrument.GainID
+	toColumn: Instrument_Bond_PoolFactor.Instrument_GainID
+
+relationship 95b67d8a-d10f-b7bd-f204-68c806be8485
+	fromColumn: Instrument.GainID
+	toColumn: Instrument_BusinessClassificationTimeSeries.Instrument_GainID
+

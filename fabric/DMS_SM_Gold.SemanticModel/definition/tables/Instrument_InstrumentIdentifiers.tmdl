@@ -1,0 +1,73 @@
+table Instrument_InstrumentIdentifiers
+	lineageTag: d17f03d2-2110-4b00-91ce-a0eb9f7cdcc7
+	sourceLineageTag: [dbo].[Instrument_InstrumentIdentifiers]
+
+	column Instrument_GainID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d51ab00c-342f-448b-805e-afe20f869f78
+		sourceLineageTag: Instrument_GainID
+		summarizeBy: none
+		sourceColumn: Instrument_GainID
+
+		annotation SummarizationSetBy = Automatic
+
+	column GainID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c41a5fec-13c3-4f5d-acc3-a9f6e6170a1b
+		sourceLineageTag: GainID
+		summarizeBy: none
+		sourceColumn: GainID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Type_Short_Description
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 23d0bb09-bb0a-4009-83b9-c32cba3e482c
+		sourceLineageTag: ID_Type_Short_Description
+		summarizeBy: none
+		sourceColumn: ID_Type_Short_Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Type_Text
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d9cf2d66-d326-41ff-855e-c8569227bd12
+		sourceLineageTag: ID_Type_Text
+		summarizeBy: none
+		sourceColumn: ID_Type_Text
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Value
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 16c1195d-7f81-43e8-9420-d1fdbd0ed3b0
+		sourceLineageTag: ID_Value
+		summarizeBy: none
+		sourceColumn: ID_Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetaData_GoldUniqueId
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 362ca52e-6650-408d-b0ab-4c768a1875ed
+		sourceLineageTag: MetaData_GoldUniqueId
+		summarizeBy: none
+		sourceColumn: MetaData_GoldUniqueId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Instrument_InstrumentIdentifiers = entity
+		mode: directLake
+		source
+			entityName: Instrument_InstrumentIdentifiers
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

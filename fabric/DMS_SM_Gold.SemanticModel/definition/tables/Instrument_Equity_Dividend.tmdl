@@ -1,0 +1,85 @@
+table Instrument_Equity_Dividend
+	lineageTag: 4faeedb9-831e-4b6a-8fa5-95ee8917bb30
+	sourceLineageTag: [dbo].[Instrument_Equity_Dividend]
+
+	column Instrument_GainID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1038d5b3-d940-460c-8cd2-727d81a84994
+		sourceLineageTag: Instrument_GainID
+		summarizeBy: none
+		sourceColumn: Instrument_GainID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DividendCcy
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7e4a96a0-e129-45ed-ae14-7855f2d0f8c7
+		sourceLineageTag: DividendCcy
+		summarizeBy: none
+		sourceColumn: DividendCcy
+
+		annotation SummarizationSetBy = Automatic
+
+	column DividendPaymentDate
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d738e3f7-a9eb-4966-ac7c-a4af01e11229
+		sourceLineageTag: DividendPaymentDate
+		summarizeBy: none
+		sourceColumn: DividendPaymentDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column DividendPerShare
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 20c5dc9b-15fa-465c-bfcf-6aa032d24921
+		sourceLineageTag: DividendPerShare
+		summarizeBy: none
+		sourceColumn: DividendPerShare
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ExDividendDate
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2449b37f-e43f-4e45-8e2f-2d475f06f7e6
+		sourceLineageTag: ExDividendDate
+		summarizeBy: none
+		sourceColumn: ExDividendDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column RecordDate
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7c67339a-79ab-43d1-a852-12c3a10d152e
+		sourceLineageTag: RecordDate
+		summarizeBy: none
+		sourceColumn: RecordDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetaData_GoldUniqueId
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a4be4aed-8d24-4cb4-83df-969f9612e816
+		sourceLineageTag: MetaData_GoldUniqueId
+		summarizeBy: none
+		sourceColumn: MetaData_GoldUniqueId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Instrument_Equity_Dividend = entity
+		mode: directLake
+		source
+			entityName: Instrument_Equity_Dividend
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

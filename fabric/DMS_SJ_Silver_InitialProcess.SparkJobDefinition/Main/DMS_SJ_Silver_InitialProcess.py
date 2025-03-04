@@ -1,0 +1,188 @@
+from pyspark.sql import SparkSession, DataFrame
+from pyspark.sql.functions import input_file_name, col, struct, current_timestamp
+from pyspark.sql.types import StructType
+import json
+from notebookutils import mssparkutils
+
+
+run_as_stream = True
+run_test = False
+bronze_path = "abfss://e7787afa-5823-4d22-8ca2-af0f38d1a339@onelake.dfs.fabric.microsoft.com/d204edd3-9cd3-4399-8d0c-16176355d799"
+
+if __name__ == "__main__":
+
+    #Spark session builder
+    spark = (SparkSession.builder.appName("DMS_SJ_Silver_InitialProcess").getOrCreate())
+    spark_context = spark.sparkContext
+
+    # Setup logging
+    log4jLogger = spark_context._jvm.org.apache.log4j
+    logger = log4jLogger.LogManager.getLogger(spark.conf.get("spark.app.name"))
+    logger.setLevel(log4jLogger.Level.INFO)
+
+## ------------------------------------ FUNCTIONS -----------------------------------------------------
+
+    def open_schema(schema_path: str) -> StructType:
+        """
+        Load a schema from a JSON file and return it as a StructType.
+
+        Parameters
+        ----------
+        schema_path : str
+            The path to the schema JSON file.
+
+        Returns
+        -------
+        StructType
+            The schema loaded from the JSON file.
+        """
+        schema_json = mssparkutils.fs.head(schema_path)
+        return StructType.fromJson(json.loads(schema_json))
+
+    def apply_schema(df: DataFrame, json_schema_path: str) -> DataFrame:
+        """
+        Apply a schema to an existing DataFrame given a schema path on OneLake.
+        """
+        logger.debug(f"Applying schema from: {json_schema_path}")
+        schema = open_schema(json_schema_path)
+        df_with_schema = spark.createDataFrame(df.rdd, schema)
+        logger.debug("Schema applied successfully.")
+        return df_with_schema
+
+    def restructure_dataframe(df: DataFrame, target_column: str) -> DataFrame:
+        """
+        Restructure DataFrame by extracting nested fields from a target column.
+        """
+        logger.debug(f"Restructuring DataFrame, promoting fields from: {target_column}")
+        metadata_cols = [col(c) for c in df.columns if c != target_column]
+        nested_fields = df.select(f"{target_column}.*").columns
+        
+        df_transformed = df.select(
+            struct(*metadata_cols).alias("MetaData"),
+            *[col(f"{target_column}.{field}").alias(field) for field in nested_fields]
+        )
+        logger.debug("DataFrame restructuring completed.")
+        return df_transformed
+
+    def persist(df: DataFrame, table_name: str):
+        if spark.catalog.tableExists(table_name):
+            # If table exists, append data
+            write_mode = "append"
+        else:
+            # If table does not exist, create new table
+            write_mode = "overwrite"
+
+        df.write.format("delta") \
+            .mode(write_mode) \
+            .save(f"Tables/{table_name}")
+
+    def transform_bronze(df: DataFrame, target_column: str) -> DataFrame:
+        """
+        Apply transformation to a bronze DataFrame.
+        """
+        logger.debug("Transforming bronze DataFrame...")
+        df_transformed = restructure_dataframe(df, target_column)
+        logger.debug("Bronze transformation completed.")
+        return df_transformed
+
+    def transform_bronze_and_persist(
+        df: DataFrame,
+        target_column: str,    
+        table_name: str,
+        json_schema_path: str
+    ):
+        """
+        Apply schema, transform bronze DataFrame, and persist it.
+        """
+        logger.debug("Starting transformation and persistence pipeline...")
+        df = apply_schema(df, json_schema_path)
+        df = df.withColumn("SilverCreatedAt", current_timestamp())
+        df = restructure_dataframe(df, target_column)
+        persist(df, table_name)
+        logger.debug("Pipeline completed successfully.")
+
+
+## ------------------------------------ STREAM -----------------------------------------------------
+
+    def load_type_stream(bronze_dms_root_path: str, type: str):
+        
+        json_schema_path = f"{bronze_dms_root_path}/_meta/bronze_{type}_schema.json"
+        schema = open_schema(json_schema_path)
+
+        path = f"{bronze_dms_root_path}/*/*/*/*.json"
+
+        logger.info(f"Starting stream on path {path}")
+
+        return spark.readStream \
+            .schema(schema) \
+            .option("multiline", "true") \
+            .option("maxFilesPerTrigger", 1) \
+            .option("badRecordsPath", f"{bronze_path}/Files/dms/{type}/bad_records") \
+            .json(path)
+
+    def get_file_name(df):
+        """Extracts the input file name from a DataFrame (assumes only one row)."""
+        files = df.select(input_file_name()).distinct().collect()
+        
+        if not files:
+            return None  # No file name found
+        
+        return files[0]["input_file_name()"]  # Extracts the first file name
+
+    def move_bad_file(file_path, destination):
+        try:
+            mssparkutils.fs.mkdirs(destination)  
+            mssparkutils.fs.mv(file_path, destination)
+            logger.info(f"Moved bad file from {file_path} to {destination}")
+        except Exception as e:
+            logger.error(f"Failed to move {file_path} to {destination}: {e}")
+
+    def on_batch(df, batch_id, type, bronze_dms_root_path, column):
+        try:
+            if df.isEmpty():
+                logger.debug(f"Skipping empty batch {batch_id}")
+                return
+
+            logger.debug(f"Batch started {batch_id}")
+            
+            table_name = f"Test{type.capitalize()}" if run_test else f"{type.capitalize()}"
+
+            json_schema_path = f"{bronze_dms_root_path}/_meta/bronze_{type}_schema.json"
+            transform_bronze_and_persist(df, column, table_name, json_schema_path)
+
+            file_name = get_file_name(df)
+            logger.info(f"File batch processed, first file in batch {file_name}")
+            print(f"File batch processed, first file in batch {file_name}")
+        except Exception as e:
+            logger.error(f"Error processing batch {batch_id}: {e}")
+            print(f"Error processing batch {batch_id}: {e}")
+
+    def process_stream(type: str, column: str):
+        
+        if run_test:
+            bronze_dms_root_path = f"{bronze_path}/Files/test/dms/{type}"
+        else:
+            bronze_dms_root_path = f"{bronze_path}/Files/dms/{type}"
+        
+        
+        df_stream = load_type_stream(bronze_dms_root_path, type)
+
+        query_writer = df_stream.writeStream \
+            .queryName(type) \
+            .foreachBatch(lambda df, batch_id: on_batch(df, batch_id, type, bronze_dms_root_path, column))
+        
+        if not run_test:
+            logger.info("Using checkpoint")
+            checkpoint_path = f"{bronze_path}/Files/dms/{type}/_checkpoints/"
+            query_writer = query_writer.option("checkpointLocation", checkpoint_path)
+        else:
+            logger.info("Without checkpoint, running once")
+
+        query = query_writer.trigger(processingTime="5 minutes").start()
+        return query
+
+    query = process_stream("instrument", "Instrument")
+    query.awaitTermination()
+
+
+    

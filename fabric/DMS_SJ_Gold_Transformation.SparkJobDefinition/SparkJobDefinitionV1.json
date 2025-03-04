@@ -1,0 +1,13 @@
+{
+  "executableFile": "DMS_SJ_Gold_Transformation.py",
+  "defaultLakehouseArtifactId": "67b6ec45-f491-492b-91f0-1d3b8bb24631",
+  "mainClass": "",
+  "additionalLakehouseIds": [
+    "0c61f4ea-76c5-45b7-a741-5505e504e80a"
+  ],
+  "retryPolicy": null,
+  "commandLineArguments": "",
+  "additionalLibraryUris": [],
+  "language": "Python",
+  "environmentArtifactId": "345cc1d2-5570-8779-4fbc-a5ab9a8a1543"
+}

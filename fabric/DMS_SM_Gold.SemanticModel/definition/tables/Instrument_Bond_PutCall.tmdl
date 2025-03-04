@@ -1,0 +1,86 @@
+table Instrument_Bond_PutCall
+	lineageTag: f8e4c58d-1a05-4a8d-86e5-e18f4849594c
+	sourceLineageTag: [dbo].[Instrument_Bond_PutCall]
+
+	column Instrument_GainID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 25355e9e-427d-47f5-8166-d9753a714e74
+		sourceLineageTag: Instrument_GainID
+		summarizeBy: none
+		sourceColumn: Instrument_GainID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e48a0a1d-2cbb-4be0-99ad-81a9492f8e64
+		sourceLineageTag: Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumberOfDays
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: d07293d6-45c1-493c-bba3-a301d2d99cbf
+		sourceLineageTag: NumberOfDays
+		summarizeBy: none
+		sourceColumn: NumberOfDays
+
+		annotation SummarizationSetBy = Automatic
+
+	column OptionType
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 16c6e691-c898-4fa6-88bf-6d6097e60750
+		sourceLineageTag: OptionType
+		summarizeBy: none
+		sourceColumn: OptionType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Price
+		dataType: double
+		sourceProviderType: float
+		lineageTag: fbecaff4-1012-4cde-9c2f-961f6ebd3ba8
+		sourceLineageTag: Price
+		summarizeBy: none
+		sourceColumn: Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ToDate
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c936d7fc-3121-40c1-9a4d-a2269c85b36a
+		sourceLineageTag: ToDate
+		summarizeBy: none
+		sourceColumn: ToDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetaData_GoldUniqueId
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6a60de82-4c45-4541-bb81-0efe75f0dcbb
+		sourceLineageTag: MetaData_GoldUniqueId
+		summarizeBy: none
+		sourceColumn: MetaData_GoldUniqueId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Instrument_Bond_PutCall = entity
+		mode: directLake
+		source
+			entityName: Instrument_Bond_PutCall
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

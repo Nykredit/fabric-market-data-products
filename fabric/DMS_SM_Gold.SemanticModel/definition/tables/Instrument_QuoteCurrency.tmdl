@@ -1,0 +1,43 @@
+table Instrument_QuoteCurrency
+	lineageTag: b8ad5145-4859-4944-859e-d8633b2dc26a
+	sourceLineageTag: [dbo].[Instrument_QuoteCurrency]
+
+	column Instrument_GainID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4806adf2-3941-472c-853e-0a860eb1b399
+		sourceLineageTag: Instrument_GainID
+		summarizeBy: none
+		sourceColumn: Instrument_GainID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 29e7431f-d711-4216-90b4-08bd4d93d000
+		sourceLineageTag: Currency
+		summarizeBy: none
+		sourceColumn: Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetaData_GoldUniqueId
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c322af29-82da-4d79-9230-19efaca61ecb
+		sourceLineageTag: MetaData_GoldUniqueId
+		summarizeBy: none
+		sourceColumn: MetaData_GoldUniqueId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Instrument_QuoteCurrency = entity
+		mode: directLake
+		source
+			entityName: Instrument_QuoteCurrency
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

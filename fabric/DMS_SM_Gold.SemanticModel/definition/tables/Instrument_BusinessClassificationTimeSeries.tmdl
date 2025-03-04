@@ -1,0 +1,153 @@
+table Instrument_BusinessClassificationTimeSeries
+	lineageTag: 248acf24-5c3a-4583-b3d3-64841e66ce3f
+	sourceLineageTag: [dbo].[Instrument_BusinessClassificationTimeSeries]
+
+	column Instrument_GainID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: af953b43-0e7a-480f-8867-973216419635
+		sourceLineageTag: Instrument_GainID
+		summarizeBy: none
+		sourceColumn: Instrument_GainID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessClassLevel1
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: fa63612c-d4cf-4b9d-b579-fad79b842e2f
+		sourceLineageTag: BusinessClassLevel1
+		summarizeBy: none
+		sourceColumn: BusinessClassLevel1
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessClassLevel1Name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 60707721-5840-4571-b1f6-718e09d240ed
+		sourceLineageTag: BusinessClassLevel1Name
+		summarizeBy: none
+		sourceColumn: BusinessClassLevel1Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessClassLevel2
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 6dd1842e-ffab-4004-9f96-676a7e9be90c
+		sourceLineageTag: BusinessClassLevel2
+		summarizeBy: none
+		sourceColumn: BusinessClassLevel2
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessClassLevel2Name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b885bb19-dc43-4da3-a35f-33e49508b45f
+		sourceLineageTag: BusinessClassLevel2Name
+		summarizeBy: none
+		sourceColumn: BusinessClassLevel2Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessClassLevel3
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3e2d088f-7930-457b-b570-02f83ce0eb3d
+		sourceLineageTag: BusinessClassLevel3
+		summarizeBy: none
+		sourceColumn: BusinessClassLevel3
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessClassLevel3Name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e824580c-aeda-4f2e-b606-26bf73dcdde2
+		sourceLineageTag: BusinessClassLevel3Name
+		summarizeBy: none
+		sourceColumn: BusinessClassLevel3Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessClassLevel4
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ea8fe3b3-4002-49f0-811a-c027216fe8ed
+		sourceLineageTag: BusinessClassLevel4
+		summarizeBy: none
+		sourceColumn: BusinessClassLevel4
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessClassLevel4Name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 856c3b65-45c0-4981-9a88-20b5b3e48ca3
+		sourceLineageTag: BusinessClassLevel4Name
+		summarizeBy: none
+		sourceColumn: BusinessClassLevel4Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessClassLevel5
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: fa0039a6-a36a-4f2f-b7ff-067c34b88113
+		sourceLineageTag: BusinessClassLevel5
+		summarizeBy: none
+		sourceColumn: BusinessClassLevel5
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessClassLevel5Name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1ed74137-e378-444f-b20d-47ff9fe5f631
+		sourceLineageTag: BusinessClassLevel5Name
+		summarizeBy: none
+		sourceColumn: BusinessClassLevel5Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessClassification
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3c0e2a8a-cb13-4483-b016-996cb333fb59
+		sourceLineageTag: BusinessClassification
+		summarizeBy: none
+		sourceColumn: BusinessClassification
+
+		annotation SummarizationSetBy = Automatic
+
+	column FromDate
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 772a700b-4dd5-4977-bd1f-ad110233b33d
+		sourceLineageTag: FromDate
+		summarizeBy: none
+		sourceColumn: FromDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetaData_GoldUniqueId
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7d5e7a5f-f409-460f-b6d9-3f70e9dc278a
+		sourceLineageTag: MetaData_GoldUniqueId
+		summarizeBy: none
+		sourceColumn: MetaData_GoldUniqueId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Instrument_BusinessClassificationTimeSeries = entity
+		mode: directLake
+		source
+			entityName: Instrument_BusinessClassificationTimeSeries
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Environment",
+    "displayName": "DMS_EV_SparkJobs",
+    "description": "Environment"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "345cc1d2-5570-8779-4fbc-a5ab9a8a1543"
+  }
+}

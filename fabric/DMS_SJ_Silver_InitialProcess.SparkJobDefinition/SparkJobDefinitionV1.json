@@ -1,0 +1,13 @@
+{
+  "executableFile": "DMS_SJ_Silver_InitialProcess.py",
+  "defaultLakehouseArtifactId": "0c61f4ea-76c5-45b7-a741-5505e504e80a",
+  "mainClass": "",
+  "additionalLakehouseIds": [
+    "d204edd3-9cd3-4399-8d0c-16176355d799"
+  ],
+  "retryPolicy": null,
+  "commandLineArguments": "",
+  "additionalLibraryUris": [],
+  "language": "Python",
+  "environmentArtifactId": "345cc1d2-5570-8779-4fbc-a5ab9a8a1543"
+}

@@ -1,0 +1,67 @@
+table Instrument_Bond_CouponRate
+	lineageTag: caaef470-24dc-4d65-9855-570724dbaf99
+	sourceLineageTag: [dbo].[Instrument_Bond_CouponRate]
+
+	column Instrument_GainID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b952ea34-d865-42b3-acf6-2210deeba67a
+		sourceLineageTag: Instrument_GainID
+		summarizeBy: none
+		sourceColumn: Instrument_GainID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 8fe3bd0e-f9fd-4786-a898-a1b669fcf2c0
+		sourceLineageTag: Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column FixingRate
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 1080bba0-7877-4c5a-8d4a-b785804ec58e
+		sourceLineageTag: FixingRate
+		summarizeBy: none
+		sourceColumn: FixingRate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column InterestRate
+		dataType: double
+		sourceProviderType: float
+		lineageTag: a690b5b2-7790-40fb-9f7e-9962ee49e6c6
+		sourceLineageTag: InterestRate
+		summarizeBy: none
+		sourceColumn: InterestRate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MetaData_GoldUniqueId
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e259a189-f9f6-4b01-8c99-dcb954b749cd
+		sourceLineageTag: MetaData_GoldUniqueId
+		summarizeBy: none
+		sourceColumn: MetaData_GoldUniqueId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Instrument_Bond_CouponRate = entity
+		mode: directLake
+		source
+			entityName: Instrument_Bond_CouponRate
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+
