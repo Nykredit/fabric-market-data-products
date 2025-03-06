@@ -1,7 +1,7 @@
 {
-  "executableFile": null,
+  "executableFile": "DMS_SJ_Test.py",
   "defaultLakehouseArtifactId": null,
-  "mainClass": null,
+  "mainClass": "",
   "additionalLakehouseIds": [],
   "retryPolicy": null,
   "commandLineArguments": null,
