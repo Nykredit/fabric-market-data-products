@@ -5,7 +5,9 @@
   "additionalLakehouseIds": [],
   "retryPolicy": null,
   "commandLineArguments": "",
-  "additionalLibraryUris": [],
+  "additionalLibraryUris": [
+    "DMS_SJ_Library.py"
+  ],
   "language": "Python",
   "environmentArtifactId": null
 }
