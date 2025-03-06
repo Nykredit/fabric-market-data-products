@@ -1,11 +1,11 @@
 {
   "executableFile": "DMS_SJ_Test.py",
-  "defaultLakehouseArtifactId": null,
+  "defaultLakehouseArtifactId": "d204edd3-9cd3-4399-8d0c-16176355d799",
   "mainClass": "",
   "additionalLakehouseIds": [],
   "retryPolicy": null,
-  "commandLineArguments": null,
-  "additionalLibraryUris": null,
-  "language": null,
+  "commandLineArguments": "",
+  "additionalLibraryUris": [],
+  "language": "Python",
   "environmentArtifactId": null
 }
