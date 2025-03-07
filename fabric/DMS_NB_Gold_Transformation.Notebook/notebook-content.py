@@ -8,17 +8,8 @@
 # META   },
 # META   "dependencies": {
 # META     "lakehouse": {
-# META       "default_lakehouse": "67b6ec45-f491-492b-91f0-1d3b8bb24631",
-# META       "default_lakehouse_name": "DMS_LH_Gold",
-# META       "default_lakehouse_workspace_id": "e7787afa-5823-4d22-8ca2-af0f38d1a339",
-# META       "known_lakehouses": [
-# META         {
-# META           "id": "67b6ec45-f491-492b-91f0-1d3b8bb24631"
-# META         },
-# META         {
-# META           "id": "0c61f4ea-76c5-45b7-a741-5505e504e80a"
-# META         }
-# META       ]
+# META       "default_lakehouse_name": "",
+# META       "default_lakehouse_workspace_id": ""
 # META     }
 # META   }
 # META }
@@ -71,6 +62,17 @@ import logging
 # META   "language_group": "synapse_pyspark"
 # META }
 
+# CELL ********************
+
+%run DMS_NB_LakehousePaths
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # MARKDOWN ********************
 
 # ## Constants & Functions
@@ -102,8 +104,9 @@ logger.setLevel(logging.INFO)
 # CELL ********************
 
 # Paths in OneLake
-silver_path = "abfss://e7787afa-5823-4d22-8ca2-af0f38d1a339@onelake.dfs.fabric.microsoft.com/0c61f4ea-76c5-45b7-a741-5505e504e80a"
-gold_path = "abfss://e7787afa-5823-4d22-8ca2-af0f38d1a339@onelake.dfs.fabric.microsoft.com/67b6ec45-f491-492b-91f0-1d3b8bb24631"
+
+silver_path = LakehouseUtils.get_local_silver_path()
+gold_path = LakehouseUtils.get_local_gold_path()
 
 run_as_stream = True
 

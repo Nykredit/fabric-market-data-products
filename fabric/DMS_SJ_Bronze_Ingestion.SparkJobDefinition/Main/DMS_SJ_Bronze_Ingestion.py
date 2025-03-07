@@ -16,9 +16,7 @@ if __name__ == "__main__":
     logger = log4jLogger.LogManager.getLogger(spark.conf.get("spark.app.name"))
     logger.setLevel(log4jLogger.Level.INFO)
 
-    with open("/dbfs/lakehouse/default/Files/_meta/EventHubConnection.txt", "r") as file:
-        sharedKey = file.readline() 
-    
+    sharedKey = mssparkutils.fs.head(f"Files/_meta/EventHubConnection.txt")
     endpoint = "sb://nywt-dms-tst-function-eventhub.servicebus.windows.net/"
     event_hub_name = "nywt-dms-tst-function-dms"
 

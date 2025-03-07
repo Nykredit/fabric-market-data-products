@@ -8,14 +8,8 @@
 # META   },
 # META   "dependencies": {
 # META     "lakehouse": {
-# META       "default_lakehouse": "d204edd3-9cd3-4399-8d0c-16176355d799",
-# META       "default_lakehouse_name": "DMS_LH_Bronze",
-# META       "default_lakehouse_workspace_id": "e7787afa-5823-4d22-8ca2-af0f38d1a339",
-# META       "known_lakehouses": [
-# META         {
-# META           "id": "d204edd3-9cd3-4399-8d0c-16176355d799"
-# META         }
-# META       ]
+# META       "default_lakehouse_name": "",
+# META       "default_lakehouse_workspace_id": ""
 # META     },
 # META     "environment": {
 # META       "environmentId": "345cc1d2-5570-8779-4fbc-a5ab9a8a1543",
@@ -30,7 +24,7 @@
 
 # CELL ********************
 
-run_test = False
+%run DMS_NB_LakehousePaths
 
 # METADATA ********************
 
@@ -48,8 +42,9 @@ import pytz
 import json
 import logging
 
-with open("/lakehouse/default/Files/_meta/EventHubConnection.txt", "r") as file:
-    sharedKey = file.readline()
+bronze_path = LakehouseUtils.get_local_bronze_path()
+
+sharedKey = mssparkutils.fs.head(f"{bronze_path}/Files/_meta/EventHubConnection.txt")
 
 endpoint = "sb://nywt-dms-tst-function-eventhub.servicebus.windows.net/"
 event_hub_name = "nywt-dms-tst-function-dms"
@@ -97,7 +92,7 @@ def stop_existing_streams():
 # Stop any existing streams before starting a new one
 stop_existing_streams()
 
-output_base_path = "Files/test/dms/" if run_test else "Files/dms/"
+output_base_path = f"{bronze_path}/Files/dms/"
 
 def write_to_file(df, epoch_id):
     if df.isEmpty():

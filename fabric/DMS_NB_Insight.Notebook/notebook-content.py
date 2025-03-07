@@ -8,20 +8,8 @@
 # META   },
 # META   "dependencies": {
 # META     "lakehouse": {
-# META       "default_lakehouse": "d204edd3-9cd3-4399-8d0c-16176355d799",
-# META       "default_lakehouse_name": "DMS_LH_Bronze",
-# META       "default_lakehouse_workspace_id": "e7787afa-5823-4d22-8ca2-af0f38d1a339",
-# META       "known_lakehouses": [
-# META         {
-# META           "id": "d204edd3-9cd3-4399-8d0c-16176355d799"
-# META         },
-# META         {
-# META           "id": "0c61f4ea-76c5-45b7-a741-5505e504e80a"
-# META         },
-# META         {
-# META           "id": "67b6ec45-f491-492b-91f0-1d3b8bb24631"
-# META         }
-# META       ]
+# META       "default_lakehouse_name": "",
+# META       "default_lakehouse_workspace_id": ""
 # META     }
 # META   }
 # META }
@@ -33,7 +21,20 @@
 
 # CELL ********************
 
-bronze_path = "abfss://e7787afa-5823-4d22-8ca2-af0f38d1a339@onelake.dfs.fabric.microsoft.com/d204edd3-9cd3-4399-8d0c-16176355d799"
+%run DMS_NB_LakehousePaths
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+bronze_path = LakehouseUtils.get_local_bronze_path()
+silver_path = LakehouseUtils.get_local_silver_path()
+gold_path = LakehouseUtils.get_local_gold_path()
 
 # METADATA ********************
 
@@ -51,7 +52,7 @@ bronze_path = "abfss://e7787afa-5823-4d22-8ca2-af0f38d1a339@onelake.dfs.fabric.m
 from pyspark.sql.functions import input_file_name, regexp_replace
 
 # Define the parent folder path in the lakehouse
-parent_folder = "Files/dms/instrument/2025/*/*/*.json"  # Update with your actual path
+parent_folder = f"{bronze_path}/Files/dms/instrument/2025/*/*/*.json"  # Update with your actual path
 
 # List all files in the folder and subfolders
 files_df = spark.read.format("binaryFile").load(parent_folder + "**")
@@ -85,11 +86,14 @@ print(f"Total number of files: {total_files}")
 
 # CELL ********************
 
+df = spark.read.format("delta").load(f"{silver_path}/Tables/Instrument")
+df.createOrReplaceTempView("Instrument")
+
 df = spark.sql("""
     SELECT 
         CAST(MetaData.BronzeCreatedAt AS DATE) AS BronzeCreatedDate, 
         COUNT(*) AS RecordCount
-    FROM DMS_LH_Silver.Instrument
+    FROM Instrument
     GROUP BY CAST(MetaData.BronzeCreatedAt AS DATE)    
     ORDER BY BronzeCreatedDate
 """)
@@ -110,11 +114,15 @@ display(df)
 
 # CELL ********************
 
+df = spark.read.format("delta").load(f"{silver_path}/Tables/Instrument")
+df.createOrReplaceTempView("Instrument")
+
+
 df = spark.sql("""
     SELECT 
         GainID,
         COUNT(*) AS RecordCount
-    FROM DMS_LH_Silver.Instrument
+    FROM Instrument
     WHERE CAST(MetaData.BronzeCreatedAt AS DATE)  = "2025-03-04"
     GROUP BY GainID    
 """)
@@ -134,11 +142,14 @@ display(df)
 
 # CELL ********************
 
+df = spark.read.format("delta").load(f"{gold_path}/Tables/Instrument")
+df.createOrReplaceTempView("Instrument")
+
 df = spark.sql("""
     SELECT 
         CAST(MetaData_BronzeCreatedAt AS DATE) AS BronzeCreatedDate, 
         COUNT(*) AS RecordCount
-    FROM DMS_LH_Gold.Instrument
+    FROM Instrument
     GROUP BY CAST(MetaData_BronzeCreatedAt AS DATE)
     ORDER BY BronzeCreatedDate
 """)
