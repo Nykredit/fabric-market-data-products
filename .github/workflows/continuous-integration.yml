@@ -52,16 +52,21 @@ jobs:
       run: |
         # Loop through all SparkJobDefinition fabric items.
         for dir in $(find fabric -type d -name "*.SparkJobDefinition"); do
-
-          # Stop if there is no Libs folder in either fabric or testing.
-          if [ ! -d "$PWD/$dir/Libs" ]; then continue; fi
           base_dir=$(basename $dir)
-          if [ ! -d "$PWD/testing/$base_dir/Libs" ]; then continue; fi
           
-          # Loop through each file in the "Libs" directory of the current directory
-          # and create a symbolic link to the file in the corresponding testing directory.
-          for file in $PWD/$dir/Libs/*; do
-            ln -s $file $PWD/testing/$base_dir/Libs/$(basename $file)
+          # Loop through all subdirectories within the current SparkJobDefinition directory.
+          for sub_dir in $PWD/$dir/*; do
+            sub_dir_name=$(basename $sub_dir)
+            
+            # Check if the subdirectory exists in both the fabric and testing directories.
+            if [ ! -d "$PWD/$dir/$sub_dir_name" ]; then continue; fi
+            if [ ! -d "$PWD/testing/$base_dir/$sub_dir_name" ]; then continue; fi
+            
+            # Loop through each file in the current subdirectory and create a symbolic link
+            # to the file in the corresponding subdirectory in the testing directory.
+            for file in $PWD/$dir/$sub_dir_name/*; do
+              ln -s $file $PWD/testing/$base_dir/$sub_dir_name/$(basename $file)
+            done
           done
         done
 
