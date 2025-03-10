@@ -1,4 +1,4 @@
-name: CI
+name: Fabric Market Data Products CI
 
 # Controls when the workflow will run
 on:
@@ -17,7 +17,7 @@ env:
   PYTHON_VERSION: '3.11'
 
 jobs:
-  test:
+  run_unit_tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -52,6 +52,7 @@ jobs:
       run: |
         for dir in $(find fabric -type d -name "*.SparkJobDefinition"); do
           base_dir=$(basename $dir)
+          mkdir -p $PWD/testing/$base_dir/Libs
           for file in $PWD/$dir/Libs/*; do
             ln -s $file $PWD/testing/$base_dir/Libs/$(basename $file)
           done
