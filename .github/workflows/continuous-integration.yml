@@ -50,9 +50,16 @@ jobs:
 
     - name: Create SparkJobDefinition Symlinks
       run: |
+        # Loop through all SparkJobDefinition fabric items.
         for dir in $(find fabric -type d -name "*.SparkJobDefinition"); do
+
+          # Stop if there is no Libs folder in either fabric or testing.
+          if [ ! -d "$PWD/$dir/Libs" ]; then continue; fi
           base_dir=$(basename $dir)
-          mkdir -p $PWD/testing/$base_dir/Libs
+          if [ ! -d "$PWD/testing/$base_dir/Libs" ]; then continue; fi
+          
+          # Loop through each file in the "Libs" directory of the current directory
+          # and create a symbolic link to the file in the corresponding testing directory.
           for file in $PWD/$dir/Libs/*; do
             ln -s $file $PWD/testing/$base_dir/Libs/$(basename $file)
           done
