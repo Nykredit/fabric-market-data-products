@@ -8,9 +8,8 @@
 # META   },
 # META   "dependencies": {
 # META     "lakehouse": {
-# META       "default_lakehouse": "f066de44-34ee-4be1-a969-685dfba9e41d",
-# META       "default_lakehouse_name": "DMS_LH_Bronze",
-# META       "default_lakehouse_workspace_id": "a9b81e29-69e9-43e5-a605-81643ce56b09"
+# META       "default_lakehouse_name": "",
+# META       "default_lakehouse_workspace_id": ""
 # META     },
 # META     "environment": {
 # META       "environmentId": "345cc1d2-5570-8779-4fbc-a5ab9a8a1543",
@@ -45,6 +44,10 @@
 # META   "language_group": "synapse_pyspark"
 # META }
 
+# MARKDOWN ********************
+
+# ### Imports
+
 # CELL ********************
 
 import json
@@ -59,6 +62,10 @@ import notebookutils
 # META   "language": "python",
 # META   "language_group": "synapse_pyspark"
 # META }
+
+# MARKDOWN ********************
+
+# ### Spark Job
 
 # CELL ********************
 
@@ -76,14 +83,16 @@ class DMSBronzeIngestionJob(SparkJob):
         self.output_base_path = f"{bronze_lh_abfspath}/Files/dms"
         self.checkpoint_location = "Files/dms/_meta/bronze_ingestion_checkpoint"
 
-        # TODO: The following should be in KeyVault
+        # TODO: The following should be in KeyVault or use another auth method
         sharedKey = notebookutils.fs.head(f"Files/_meta/EventHubConnection.txt")
         endpoint = "sb://nywt-dms-tst-function-eventhub.servicebus.windows.net/"
         event_hub_name = "nywt-dms-tst-function-dms"
-        event_hub_connection_string = f"Endpoint={endpoint};SharedAccessKeyName=ListenSharedAccessKey;SharedAccessKey={sharedKey};EntityPath={event_hub_name}"
-        self.eh_conf = {
-            "eventhubs.connectionString": self.spark.sparkContext._jvm.org.apache.spark.eventhubs.EventHubsUtils.encrypt(event_hub_connection_string),    
-        }
+        self.event_hub_connection_string = (
+            f"Endpoint={endpoint};"
+            "SharedAccessKeyName=ListenSharedAccessKey;"
+            f"SharedAccessKey={sharedKey};"
+            f"EntityPath={event_hub_name}"
+        )
 
     def setup_event_stream(self) -> DataFrame:
         """
@@ -94,10 +103,12 @@ class DMSBronzeIngestionJob(SparkJob):
         pyspark.sql.DataFrame
             Streaming DataFrame with selected columns.
         """
+        encrypted_connection_string = self.spark.sparkContext._jvm.org.apache.spark.eventhubs.EventHubsUtils.encrypt(self.event_hub_connection_string)
+        eh_conf = {"eventhubs.connectionString": encrypted_connection_string}
         df_stream = (
             self.spark.readStream
             .format("eventhubs")
-            .options(**self.eh_conf)    
+            .options(**eh_conf)    
             .load()
         )
 
@@ -140,7 +151,7 @@ class DMSBronzeIngestionJob(SparkJob):
         notebookutils.fs.put(full_path, json_data, overwrite=True)
         return full_path
 
-    def write_to_file(self, df: DataFrame, epoch_id: int):
+    def process_batch(self, df: DataFrame, epoch_id: int):
         """
         Processes each batch of data and writes rows to files.
 
@@ -179,7 +190,7 @@ class DMSBronzeIngestionJob(SparkJob):
         started_stream = (
             df_stream.writeStream
             .option("checkpointLocation", self.checkpoint_location)
-            .foreachBatch(self.write_to_file)
+            .foreachBatch(self.process_batch)
             .trigger(processingTime="10 minutes")
             .start()
         )
