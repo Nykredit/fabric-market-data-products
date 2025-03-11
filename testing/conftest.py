@@ -12,10 +12,8 @@ import pytest
 import sys
 
 
-# Mock the notebookutils module before any imports or tests are run.
-# The method lakehouse.list is mocked to return the test location '/tmp/delta_tables'.
+# Mock the notebookutils module before any imports or tests are run as it only exists in Fabric.
 mock_notebookutils = MagicMock()
-mock_notebookutils.lakehouse.list.return_value = [{'properties': {'abfsPath': '/tmp/delta_tables'}}]
 sys.modules['notebookutils'] = mock_notebookutils
 
 
