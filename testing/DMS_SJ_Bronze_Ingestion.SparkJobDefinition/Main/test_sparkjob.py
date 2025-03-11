@@ -15,12 +15,15 @@ from DMS_SJ_Bronze_Ingestion import DMSBronzeIngestionJob
 def spark_job(spark):
     """
     Fixture to create an instance of DMSBronzeIngestionJob with the Spark session 
-    and a mocked logger.
+    and a mocked logger and mocked LakehouseUtils.
     """
-    job = DMSBronzeIngestionJob()
-    job.spark = spark
-    job.logger = MagicMock()
-    yield job
+    with patch('DMS_SJ_Bronze_Ingestion.LakehouseUtils') as mock_lakehouse_utils:
+        mock_lakehouse_utils.get_bronze_lakehouse_path.return_value = "/mocked/path/to/bronze"
+        
+        job = DMSBronzeIngestionJob()
+        job.spark = spark
+        job.logger = MagicMock()
+        yield job
 
 
 def test_write_row_to_file():
@@ -35,7 +38,7 @@ def test_write_row_to_file():
         OutputPath="/path/to/output"
     )
 
-    with patch('notebookutils.fs.put') as mock_put:
+    with patch('DMS_SJ_Bronze_Ingestion.notebookutils.fs.put') as mock_put:
         # Run function
         file_path = spark_job.write_row_to_file(row)
 
