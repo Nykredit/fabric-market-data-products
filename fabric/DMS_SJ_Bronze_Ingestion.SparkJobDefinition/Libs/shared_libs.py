@@ -190,7 +190,7 @@ class LakehouseUtils:
         LakehouseError
             If the bronze lakehouse cannot be found.
         """
-        lakehouse_name = next((name for name in LakehouseUtils.get_current_workspace_lakehouse_names() if "bronze" in name), None)
+        lakehouse_name = next((name for name in LakehouseUtils.get_current_workspace_lakehouse_names() if "bronze" in name.lower()), None)
         if lakehouse_name is None:
             raise LakehouseError("Bronze lakehouse not found in the current workspace.")
         return LakehouseUtils.get_lakehouse_path(lakehouse_name, workspace_id)
@@ -215,7 +215,7 @@ class LakehouseUtils:
         LakehouseError
             If the silver lakehouse cannot be found.
         """
-        lakehouse_name = next((name for name in LakehouseUtils.get_current_workspace_lakehouse_names() if "silver" in name), None)
+        lakehouse_name = next((name for name in LakehouseUtils.get_current_workspace_lakehouse_names() if "silver" in name.lower()), None)
         if lakehouse_name is None:
             raise LakehouseError("Silver lakehouse not found in the current workspace.")
         return LakehouseUtils.get_lakehouse_path(lakehouse_name, workspace_id)
@@ -240,7 +240,7 @@ class LakehouseUtils:
         LakehouseError
             If the gold lakehouse cannot be found.
         """
-        lakehouse_name = next((name for name in LakehouseUtils.get_current_workspace_lakehouse_names() if "gold" in name), None)
+        lakehouse_name = next((name for name in LakehouseUtils.get_current_workspace_lakehouse_names() if "gold" in name.lower()), None)
         if lakehouse_name is None:
             raise LakehouseError("Gold lakehouse not found in the current workspace.")
         return LakehouseUtils.get_lakehouse_path(lakehouse_name, workspace_id)
