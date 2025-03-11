@@ -21,14 +21,16 @@ class DMSBronzeIngestionJob(SparkJob):
         self.output_base_path = f"{bronze_lh_abfspath}/Files/dms"
         self.checkpoint_location = "Files/dms/_meta/bronze_ingestion_checkpoint"
 
-        # TODO: The following should be in KeyVault
+        # TODO: The following should be in KeyVault or use another auth method
         sharedKey = notebookutils.fs.head(f"Files/_meta/EventHubConnection.txt")
         endpoint = "sb://nywt-dms-tst-function-eventhub.servicebus.windows.net/"
         event_hub_name = "nywt-dms-tst-function-dms"
-        event_hub_connection_string = f"Endpoint={endpoint};SharedAccessKeyName=ListenSharedAccessKey;SharedAccessKey={sharedKey};EntityPath={event_hub_name}"
-        self.eh_conf = {
-            "eventhubs.connectionString": self.spark.sparkContext._jvm.org.apache.spark.eventhubs.EventHubsUtils.encrypt(event_hub_connection_string),    
-        }
+        self.event_hub_connection_string = (
+            f"Endpoint={endpoint};"
+            "SharedAccessKeyName=ListenSharedAccessKey;"
+            f"SharedAccessKey={sharedKey};"
+            f"EntityPath={event_hub_name}"
+        )
 
     def setup_event_stream(self) -> DataFrame:
         """
@@ -39,10 +41,13 @@ class DMSBronzeIngestionJob(SparkJob):
         pyspark.sql.DataFrame
             Streaming DataFrame with selected columns.
         """
+        eh_conf = {
+            "eventhubs.connectionString": self.spark.sparkContext._jvm.org.apache.spark.eventhubs.EventHubsUtils.encrypt(self.event_hub_connection_string),    
+        }
         df_stream = (
             self.spark.readStream
             .format("eventhubs")
-            .options(**self.eh_conf)    
+            .options(**eh_conf)    
             .load()
         )
 
