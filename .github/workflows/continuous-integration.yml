@@ -52,22 +52,28 @@ jobs:
       run: |
         # Loop through all SparkJobDefinition fabric items.
         for dir in $(find fabric -type d -name "*.SparkJobDefinition"); do
-          base_dir=$(basename $dir)
+          base_dir=$(basename "$dir") # Name without fabric prefix or any suffix
           
-          # Loop through all subdirectories within the current SparkJobDefinition directory.
-          for sub_dir in $PWD/$dir/*; do
-            sub_dir_name=$(basename $sub_dir)
-            
-            # Check if the subdirectory exists in both the fabric and testing directories.
-            if [ ! -d "$PWD/$dir/$sub_dir_name" ]; then continue; fi
-            if [ ! -d "$PWD/testing/$base_dir/$sub_dir_name" ]; then continue; fi
-            
-            # Loop through each file in the current subdirectory and create a symbolic link
-            # to the file in the corresponding subdirectory in the testing directory.
-            for file in $PWD/$dir/$sub_dir_name/*; do
-              ln -s $file $PWD/testing/$base_dir/$sub_dir_name/$(basename $file)
+          # Link fabric Libs to testing Libs
+          if [ -d "$PWD/$dir/Libs" ] && [ -d "$PWD/testing/$base_dir/Libs" ]; then
+            for file in "$PWD/$dir/Libs"/*; do
+              ln -s "$file" "$PWD/testing/$base_dir/Libs/$(basename "$file")"
             done
-          done
+          fi
+
+          # Link fabric Libs to testing Main
+          if [ -d "$PWD/$dir/Libs" ] && [ -d "$PWD/testing/$base_dir/Main" ]; then
+            for file in "$PWD/$dir/Libs"/*; do
+              ln -s "$file" "$PWD/testing/$base_dir/Main/$(basename "$file")"
+            done
+          fi
+
+          # Link fabric Main to testing Main
+          if [ -d "$PWD/$dir/Main" ] && [ -d "$PWD/testing/$base_dir/Main" ]; then
+            for file in "$PWD/$dir/Main"/*; do
+              ln -s "$file" "$PWD/testing/$base_dir/Main/$(basename "$file")"
+            done
+          fi
         done
 
     - name: Run Python tests in testing folder
