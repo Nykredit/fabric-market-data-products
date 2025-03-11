@@ -24,7 +24,7 @@ def spark_job(spark):
         yield job
 
 
-def test_write_row_to_file():
+def test_write_row_to_file(spark_job):
     """"""
 
     # Prepare testdata
