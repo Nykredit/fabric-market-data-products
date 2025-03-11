@@ -16,7 +16,7 @@ def spark_job(spark):
     and a mocked logger and mocked LakehouseUtils.
     """
     with patch('DMS_SJ_Bronze_Ingestion.LakehouseUtils') as mock_lakehouse_utils, \
-        patch('notebookutils.fs.head') as mock_fs_head:
+        patch('DMS_SJ_Bronze_Ingestion.notebookutils.fs.head') as mock_fs_head:
 
         # Mocked function calls
         mock_lakehouse_utils.get_bronze_lakehouse_path.return_value = "/mocked/path/to/bronze"
@@ -30,7 +30,6 @@ def spark_job(spark):
 
 
 def test_write_row_to_file(spark_job):
-    """"""
 
     # Prepare testdata
     row = Row(
