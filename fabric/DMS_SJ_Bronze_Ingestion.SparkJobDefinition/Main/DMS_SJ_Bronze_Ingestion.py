@@ -89,7 +89,7 @@ class DMSBronzeIngestionJob(SparkJob):
         notebookutils.fs.put(full_path, json_data, overwrite=True)
         return full_path
 
-    def write_to_file(self, df: DataFrame, epoch_id: int):
+    def process_batch(self, df: DataFrame, epoch_id: int):
         """
         Processes each batch of data and writes rows to files.
 
@@ -128,7 +128,7 @@ class DMSBronzeIngestionJob(SparkJob):
         started_stream = (
             df_stream.writeStream
             .option("checkpointLocation", self.checkpoint_location)
-            .foreachBatch(self.write_to_file)
+            .foreachBatch(self.process_batch)
             .trigger(processingTime="10 minutes")
             .start()
         )
