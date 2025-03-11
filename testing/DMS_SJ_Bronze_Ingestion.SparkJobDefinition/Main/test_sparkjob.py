@@ -25,7 +25,7 @@ def spark_job(spark):
         # Create job instance and use spark fixture
         job = DMSBronzeIngestionJob()
         job._spark = spark
-        job.logger = MagicMock()
+        job._logger = MagicMock()
         yield job
 
 
