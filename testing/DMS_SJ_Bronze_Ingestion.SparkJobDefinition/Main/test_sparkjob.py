@@ -13,7 +13,7 @@ from DMS_SJ_Bronze_Ingestion import DMSBronzeIngestionJob
 def spark_job(spark):
     """
     Fixture to create an instance of DMSBronzeIngestionJob with the Spark session 
-    and a mocked logger and mocked LakehouseUtils.
+    and mocked logger, LakehouseUtils and notebookutils.
     """
     with patch('DMS_SJ_Bronze_Ingestion.LakehouseUtils') as mock_lakehouse_utils, \
         patch('DMS_SJ_Bronze_Ingestion.notebookutils.fs.head') as mock_fs_head:
@@ -30,6 +30,9 @@ def spark_job(spark):
 
 
 def test_write_row_to_file(spark_job):
+    """
+    Unittest to test the static method write_row_to_file of DMSBronzeIngestionJob.
+    """
 
     # Prepare testdata
     row = Row(
@@ -50,7 +53,7 @@ def test_write_row_to_file(spark_job):
 
         # Verify the content written to the file
         expected_content = json.dumps({
-            "Type": "test_event",
+            "Type": "Instrument",
             "data": "sample_data",
             "BronzeCreatedAt": "2025-03-11T14:52:53"
         }, indent=2)

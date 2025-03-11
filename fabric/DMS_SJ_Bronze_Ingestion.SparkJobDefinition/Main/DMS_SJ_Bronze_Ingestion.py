@@ -41,9 +41,8 @@ class DMSBronzeIngestionJob(SparkJob):
         pyspark.sql.DataFrame
             Streaming DataFrame with selected columns.
         """
-        eh_conf = {
-            "eventhubs.connectionString": self.spark.sparkContext._jvm.org.apache.spark.eventhubs.EventHubsUtils.encrypt(self.event_hub_connection_string),    
-        }
+        encrypted_connection_string = self.spark.sparkContext._jvm.org.apache.spark.eventhubs.EventHubsUtils.encrypt(self.event_hub_connection_string)
+        eh_conf = {"eventhubs.connectionString": encrypted_connection_string}
         df_stream = (
             self.spark.readStream
             .format("eventhubs")
