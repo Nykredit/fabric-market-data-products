@@ -3,8 +3,7 @@ from datetime import datetime
 from unittest.mock import patch, MagicMock
 
 import pytest
-from pyspark.sql import DataFrame, Row
-from pyspark.sql.functions import col
+from pyspark.sql import Row
 
 from DMS_SJ_Bronze_Ingestion import DMSBronzeIngestionJob
 
@@ -27,41 +26,6 @@ def spark_job(spark):
         job._spark = spark
         job._logger = MagicMock()
         yield job
-
-
-def xtest_setup_event_stream(spark_job):
-    """
-    Unittest to test the method setup_event_stream of DMSBronzeIngestionJob.
-    """
-    with patch.object(spark_job.spark.sparkContext._jvm.org.apache.spark.eventhubs.EventHubsUtils, 'encrypt', return_value="mocked_encrypted_connection_string"), \
-         patch.object(spark_job.spark, 'readStream') as mock_readStream:
-        
-        # Mock the DataFrame returned by readStream
-        mock_df = MagicMock(spec=DataFrame)
-        mock_readStream.format.return_value = mock_readStream
-        mock_readStream.options.return_value = mock_readStream
-        mock_readStream.load.return_value = mock_df
-        
-        # Mock the select method to return the mock DataFrame
-        mock_df.select.return_value = mock_df
-        
-        # Call the method
-        df_stream = spark_job.setup_event_stream()
-        
-        # Verify the mocked method calls
-        spark_job.spark.sparkContext._jvm.org.apache.spark.eventhubs.EventHubsUtils.encrypt.assert_called_once_with("mocked_event_hub_connection_string")
-        mock_readStream.format.assert_called_once_with("eventhubs")
-        mock_readStream.options.assert_called_once_with(eventhubs_connectionString="mocked_encrypted_connection_string")
-        mock_readStream.load.assert_called_once()
-        mock_df.select.assert_called_once_with(
-            col("body").cast("string").alias("decoded_body"),
-            col("partition"),
-            col("sequenceNumber")
-        )
-        
-        # Verify the returned DataFrame
-        assert df_stream == mock_df
-
 
 def test_write_row_to_file(spark_job):
     """
@@ -93,7 +57,6 @@ def test_write_row_to_file(spark_job):
         }, indent=2)
         mock_put.assert_called_once_with(expected_path, expected_content, overwrite=True)
 
-
 def test_process_batch_empty_df(spark_job):
     """
     Unittest to test the method process_batch of DMSBronzeIngestionJob with an empty DataFrame.
@@ -111,7 +74,6 @@ def test_process_batch_empty_df(spark_job):
     spark_job.logger.info.assert_called_once_with("No data received in batch 1. Skipping save.")
     spark_job.logger.debug.assert_not_called()
     spark_job.logger.error.assert_not_called()
-
 
 def test_process_batch_non_empty_df(spark_job):
     """
