@@ -15,14 +15,11 @@ def spark_job(spark):
     Fixture to create an instance of DMSBronzeIngestionJob with the Spark session 
     and a mocked logger and mocked LakehouseUtils.
     """
-    with patch('DMS_SJ_Bronze_Ingestion.LakehouseUtils') as mock_lakehouse_utils:
-        mock_lakehouse_utils.get_bronze_lakehouse_path.return_value = "/mocked/path/to/bronze"
-        
+    with patch.object(DMSBronzeIngestionJob, '__init__', lambda _: None): 
         job = DMSBronzeIngestionJob()
         job.spark = spark
         job.logger = MagicMock()
         yield job
-
 
 def test_write_row_to_file(spark_job):
     """"""
