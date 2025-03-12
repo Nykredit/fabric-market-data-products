@@ -1,25 +1,3 @@
-# Fabric notebook source
-
-# METADATA ********************
-
-# META {
-# META   "kernel_info": {
-# META     "name": "synapse_pyspark"
-# META   },
-# META   "dependencies": {
-# META     "lakehouse": {
-# META       "default_lakehouse_name": "",
-# META       "default_lakehouse_workspace_id": ""
-# META     }
-# META   }
-# META }
-
-# MARKDOWN ********************
-
-# ## Imports
-
-# CELL ********************
-
 import logging
 
 from pyspark.sql import SparkSession
@@ -27,18 +5,6 @@ from py4j.protocol import Py4JJavaError
 from abc import ABC, abstractmethod
 import notebookutils
 
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# MARKDOWN ********************
-
-# ## SparkJob Class
-
-# CELL ********************
 
 class SparkJob(ABC):
     """
@@ -135,38 +101,12 @@ class SparkJob(ABC):
         pass
 
 
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# MARKDOWN ********************
-
-# ## LakehouseError Class
-
-# CELL ********************
-
 class LakehouseError(Exception):
     """Custom exception for lakehouse-related errors."""
     def __init__(self, message):
         super().__init__(message)
         self.message = message
 
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# MARKDOWN ********************
-
-# ## LakehouseUtils Class
-
-# CELL ********************
 
 class LakehouseUtils:
     """
@@ -257,12 +197,3 @@ class LakehouseUtils:
         if lakehouse_name is None:
             raise LakehouseError(f"{lakehouse_keyword} lakehouse not found in the current workspace.")
         return LakehouseUtils.get_lakehouse_path(lakehouse_name, workspace_id)
-
-
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }

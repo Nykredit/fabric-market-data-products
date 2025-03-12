@@ -23,8 +23,8 @@
 # CELL ********************
 
 # Mounting the dev and local bronze lakehouses
-local_bronze_root = LakehouseUtils.get_local_bronze_path()
-dev_bronze_root = LakehouseUtils.get_dev_bronze_path()
+local_bronze_root = LakehouseUtils.get_lakehouse_path_by_keyword("bronze")
+dev_bronze_root = LakehouseUtils.get_lakehouse_path_by_keyword("bronze", workspace_id="e7787afa-5823-4d22-8ca2-af0f38d1a339")
 
 def copy_bronze_data(subfolder):
     """

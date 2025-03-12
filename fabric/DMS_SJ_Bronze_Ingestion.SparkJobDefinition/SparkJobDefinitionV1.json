@@ -5,7 +5,9 @@
   "additionalLakehouseIds": [],
   "retryPolicy": null,
   "commandLineArguments": "",
-  "additionalLibraryUris": [],
+  "additionalLibraryUris": [
+    "shared_libs.py"
+  ],
   "language": "Python",
   "environmentArtifactId": "345cc1d2-5570-8779-4fbc-a5ab9a8a1543"
 }
