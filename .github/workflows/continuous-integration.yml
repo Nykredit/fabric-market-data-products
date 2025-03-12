@@ -49,7 +49,7 @@ jobs:
         pip install -r testing/unit-tests-requirements.txt
 
     - name: Create SparkJobDefinition Symlinks
-      run: ./create_symlinks.sh
+      run: .github/workflows/create_symlinks.sh
 
     - name: Run Python tests in testing folder
       run: |
