@@ -174,29 +174,31 @@ class LakehouseUtils:
 
     Methods
     -------
-    get_current_workspace_lakehouse_names()
-        Retrieves the names of lakehouses in the current workspace.
+    get_workspace_lakehouse_names(workspace_id=None)
+        Retrieves the names of lakehouses in a workspace.
     get_lakehouse_path(lakehouse_name, workspace_id=None)
         Retrieves the path of a lakehouse by name and optionally workspace ID.
-    get_bronze_lakehouse_path(workspace_id=None)
-        Retrieves the path of the bronze lakehouse in the current or specified workspace.
-    get_silver_lakehouse_path(workspace_id=None)
-        Retrieves the path of the silver lakehouse in the current or specified workspace.
-    get_gold_lakehouse_path(workspace_id=None)
-        Retrieves the path of the gold lakehouse in the current or specified workspace.
+    get_lakehouse_path_by_keyword(lakehouse_keyword, workspace_id=None)
+        Retrieves the path of a lakehouse specified by a keyword in the current or specified workspace.
     """
 
     @staticmethod
-    def get_current_workspace_lakehouse_names() -> list[str]:
+    def get_workspace_lakehouse_names(workspace_id: str = None) -> list[str]:
         """
-        Retrieves the names of lakehouses in the current workspace.
+        Retrieves the names of lakehouses optionally by workspace ID. If no workspace ID
+        is provided the default lakehouse is used.
+
+        Parameters
+        ----------
+        workspace_id : str, optional
+            The ID of the workspace.
 
         Returns
         -------
         list[str]
-            A list of lakehouse names in the current workspace.
+            A list of lakehouse names in the provided workspace.
         """
-        return [item["displayName"] for item in notebookutils.lakehouse.list()]
+        return [item["displayName"] for item in notebookutils.lakehouse.list(workspace_id)]
 
     @staticmethod
     def get_lakehouse_path(lakehouse_name: str, workspace_id: str = None) -> str:
@@ -231,9 +233,10 @@ class LakehouseUtils:
         return lakehouse_item["properties"]["abfsPath"]
 
     @staticmethod
-    def get_bronze_lakehouse_path(workspace_id: str = None) -> str:
+    def get_lakehouse_path_by_keyword(lakehouse_keyword: str, workspace_id: str = None):
         """
-        Retrieves the path of the bronze lakehouse in the current or specified workspace.
+        Retrieves the path of the lakehouse given by a keyword in the default or specified workspace.
+        The keyword is just a substring check, where the first matching lakehouse name is returned.
 
         Parameters
         ----------
@@ -243,67 +246,18 @@ class LakehouseUtils:
         Returns
         -------
         str
-            The path of the bronze lakehouse.
+            The path of the lakehouse.
 
         Raises
         ------
         LakehouseError
-            If the bronze lakehouse cannot be found.
+            If no lakehouse can be found by that name.
         """
-        lakehouse_name = next((name for name in LakehouseUtils.get_current_workspace_lakehouse_names() if "bronze" in name.lower()), None)
+        lakehouse_name = next((name for name in LakehouseUtils.get_workspace_lakehouse_names(workspace_id) if lakehouse_keyword.lower() in name.lower()), None)
         if lakehouse_name is None:
-            raise LakehouseError("Bronze lakehouse not found in the current workspace.")
+            raise LakehouseError(f"{lakehouse_keyword} lakehouse not found in the current workspace.")
         return LakehouseUtils.get_lakehouse_path(lakehouse_name, workspace_id)
 
-    @staticmethod
-    def get_silver_lakehouse_path(workspace_id: str = None) -> str:
-        """
-        Retrieves the path of the silver lakehouse in the current or specified workspace.
-
-        Parameters
-        ----------
-        workspace_id : str, optional
-            The ID of the workspace.
-
-        Returns
-        -------
-        str
-            The path of the silver lakehouse.
-
-        Raises
-        ------
-        LakehouseError
-            If the silver lakehouse cannot be found.
-        """
-        lakehouse_name = next((name for name in LakehouseUtils.get_current_workspace_lakehouse_names() if "silver" in name.lower()), None)
-        if lakehouse_name is None:
-            raise LakehouseError("Silver lakehouse not found in the current workspace.")
-        return LakehouseUtils.get_lakehouse_path(lakehouse_name, workspace_id)
-
-    @staticmethod
-    def get_gold_lakehouse_path(workspace_id: str = None) -> str:
-        """
-        Retrieves the path of the gold lakehouse in the current or specified workspace.
-
-        Parameters
-        ----------
-        workspace_id : str, optional
-            The ID of the workspace.
-
-        Returns
-        -------
-        str
-            The path of the gold lakehouse.
-
-        Raises
-        ------
-        LakehouseError
-            If the gold lakehouse cannot be found.
-        """
-        lakehouse_name = next((name for name in LakehouseUtils.get_current_workspace_lakehouse_names() if "gold" in name.lower()), None)
-        if lakehouse_name is None:
-            raise LakehouseError("Gold lakehouse not found in the current workspace.")
-        return LakehouseUtils.get_lakehouse_path(lakehouse_name, workspace_id)
 
 
 # METADATA ********************

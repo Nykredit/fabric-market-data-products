@@ -79,7 +79,7 @@ class DMSBronzeIngestionJob(SparkJob):
         """
         Initializes DMSBronzeIngestionJob with EventHub connection details and paths.
         """
-        bronze_lh_abfspath = LakehouseUtils.get_bronze_lakehouse_path()
+        bronze_lh_abfspath = LakehouseUtils.get_lakehouse_path_by_keyword("bronze")
         self.output_base_path = f"{bronze_lh_abfspath}/Files/dms"
         self.checkpoint_location = "Files/dms/_meta/bronze_ingestion_checkpoint"
 
