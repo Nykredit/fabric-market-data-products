@@ -143,4 +143,4 @@ def test_process_batch_non_empty_df(spark_job):
             if field != "BronzeCreatedAt":
                 assert expected_row_dict[field] == called_row[field]
             else:
-                assert expected_row_dict[field] is not None and isinstance(expected_row_dict[field], TimestampType)
+                assert called_row[field] is not None and isinstance(called_row[field], TimestampType)
