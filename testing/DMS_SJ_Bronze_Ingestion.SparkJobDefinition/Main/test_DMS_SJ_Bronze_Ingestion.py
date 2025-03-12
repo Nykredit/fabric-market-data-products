@@ -18,7 +18,7 @@ def spark_job(spark):
         patch('DMS_SJ_Bronze_Ingestion.notebookutils.fs.head') as mock_fs_head:
 
         # Mocked function calls
-        mock_lakehouse_utils.get_bronze_lakehouse_path.return_value = "/mocked/path/to/bronze"
+        mock_lakehouse_utils.get_lakehouse_path_by_keyword.return_value = "/mocked/path/to/bronze"
         mock_fs_head.return_value = "mocked_shared_key"
 
         # Create job instance and use spark fixture
