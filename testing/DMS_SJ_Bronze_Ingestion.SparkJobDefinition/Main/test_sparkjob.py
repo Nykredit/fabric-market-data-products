@@ -4,6 +4,7 @@ from unittest.mock import patch, MagicMock
 
 import pytest
 from pyspark.sql import Row
+from pyspark.sql.types import TimestampType
 
 from DMS_SJ_Bronze_Ingestion import DMSBronzeIngestionJob
 
@@ -134,9 +135,12 @@ def test_process_batch_non_empty_df(spark_job):
         )
     ]
 
+    # Validate the fields in the rows supplied to the write_row_to_file method call
     for call, expected_row in zip(spark_job.write_row_to_file.call_args_list, expected_data):
         called_row = call[0][0].asDict()
         expected_row_dict = expected_row.asDict()
         for field in expected_row_dict:
             if field != "BronzeCreatedAt":
                 assert expected_row_dict[field] == called_row[field]
+            else:
+                assert expected_row_dict[field] is not None and isinstance(expected_row_dict[field], TimestampType)

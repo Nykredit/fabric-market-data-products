@@ -49,32 +49,7 @@ jobs:
         pip install -r testing/unit-tests-requirements.txt
 
     - name: Create SparkJobDefinition Symlinks
-      run: |
-        # Loop through all SparkJobDefinition fabric items.
-        for dir in $(find fabric -type d -name "*.SparkJobDefinition"); do
-          base_dir=$(basename "$dir") # Name without fabric prefix or any suffix
-          
-          # Link fabric Libs to testing Libs
-          if [ -d "$PWD/$dir/Libs" ] && [ -d "$PWD/testing/$base_dir/Libs" ]; then
-            for file in "$PWD/$dir/Libs"/*; do
-              ln -s "$file" "$PWD/testing/$base_dir/Libs/$(basename "$file")"
-            done
-          fi
-
-          # Link fabric Libs to testing Main
-          if [ -d "$PWD/$dir/Libs" ] && [ -d "$PWD/testing/$base_dir/Main" ]; then
-            for file in "$PWD/$dir/Libs"/*; do
-              ln -s "$file" "$PWD/testing/$base_dir/Main/$(basename "$file")"
-            done
-          fi
-
-          # Link fabric Main to testing Main
-          if [ -d "$PWD/$dir/Main" ] && [ -d "$PWD/testing/$base_dir/Main" ]; then
-            for file in "$PWD/$dir/Main"/*; do
-              ln -s "$file" "$PWD/testing/$base_dir/Main/$(basename "$file")"
-            done
-          fi
-        done
+      run: ./create_symlinks.sh
 
     - name: Run Python tests in testing folder
       run: |
