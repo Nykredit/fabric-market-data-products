@@ -138,7 +138,12 @@ class LakehouseUtils:
         list[str]
             A list of lakehouse names in the provided workspace.
         """
-        return [item["displayName"] for item in notebookutils.lakehouse.list(workspace_id)]
+        if workspace_id is None:
+            lakehouses = notebookutils.lakehouse.list()
+        else:
+            lakehouses = notebookutils.lakehouse.list(workspace_id)
+
+        return [item["displayName"] for item in lakehouses]
 
     @staticmethod
     def get_lakehouse_path(lakehouse_name: str, workspace_id: str = None) -> str:
