@@ -26,18 +26,18 @@ Desktop and Visual Studio Code.
 
 2) Ensure you have the Nykredit proxies configured for Docker. Modify your docker config to include the following:
 
-```json
-{
-    "proxies": {
-        "default": {
-        "httpProxy": "http://httpproxy.nykreditnet.net:8080",
-        "httpsProxy": "http://httpproxy.nykreditnet.net:8080",
-        "noProxy": "localhost,127.0.0.1,.nykreditnet.net"
+    ```json
+    {
+        "proxies": {
+            "default": {
+            "httpProxy": "http://httpproxy.nykreditnet.net:8080",
+            "httpsProxy": "http://httpproxy.nykreditnet.net:8080",
+            "noProxy": "localhost,127.0.0.1,.nykreditnet.net"
+            }
         }
     }
-}
-```
-The docker config can usually be found in `C:\Users\<user>\.docker\config.json`.
+    ```
+    The docker config can usually be found in `C:\Users\<user>\.docker\config.json`.
 
 3) Install Dev Containers extension for Visual Studio Code.
 
@@ -54,7 +54,7 @@ Running the unit tests for the repository is quite simple, when the dev containe
 Open a terminal and run the following bash script:
 
 ```bash
-.github/scripts/create_testing_symlinks.sh
+testing/run_tests.sh
 ```
 
 This script will create symlinks needed for testing, run all tests, and then remove the symlinks. 
