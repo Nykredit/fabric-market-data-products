@@ -21,7 +21,7 @@ It is possible to develop and test the Python Spark jobs locally by using a dev 
 Desktop and Visual Studio Code. 
 
 ## Setup Dev Container
-1) First ensure you have WSL, Docker Desktop and Visual Studio Code instaled, use the guide
+1) First ensure you have WSL, Docker Desktop and Visual Studio Code installed, use the guide
 [here](https://wiki.tools.nykredit.it/pages/viewpage.action?spaceKey=SDP&title=Windows+Subsystem+for+Linux+%28WSL%29+in+Nykredit).
 
 2) Ensure you have the Nykredit proxies configured for Docker. Modify your docker config to include the following:
@@ -39,24 +39,22 @@ Desktop and Visual Studio Code.
 ```
 The docker config can usually be found in `C:\Users\<user>\.docker\config.json`.
 
-3) In Docker Desktop create a Dev Environment that either clones the repository or points to your existing
+3) Install Dev Containers extension for Visual Studio Code.
+
+4) In Docker Desktop create a Dev Environment that either clones the repository or points to your existing
 git repository.
 
-4) Start the dev environment and launch the Visual Studio Code from Docker Desktop. You should now be able
+5) Start the dev environment and launch the Visual Studio Code from Docker Desktop. You should now be able
 to do local development with Python integration, unit tests etc. in the dev container Visual Studio Code
 instance.
 
 ## Running Unit Tests
 Running the unit tests for the repository is quite simple, when the dev container is running.
 
-1) Open a terminal and run the bash script to create symlinks needed for the test files:
+Open a terminal and run the following bash script:
 
 ```bash
-./.github/scripts/create_testing_symlinks.sh
+.github/scripts/create_testing_symlinks.sh
 ```
 
-2) Run the python testing framework pytest in the root:
-
-```bash
-pytest .
-```
+This script will create symlinks needed for testing, run all tests, and then remove the symlinks. 
