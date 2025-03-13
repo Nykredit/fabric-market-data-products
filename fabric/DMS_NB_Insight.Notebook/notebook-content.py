@@ -32,9 +32,9 @@
 
 # CELL ********************
 
-bronze_path = LakehouseUtils.get_local_bronze_path()
-silver_path = LakehouseUtils.get_local_silver_path()
-gold_path = LakehouseUtils.get_local_gold_path()
+bronze_path = LakehouseUtils.get_lakehouse_path_by_keyword("bronze")
+silver_path = LakehouseUtils.get_lakehouse_path_by_keyword("silver")
+gold_path = LakehouseUtils.get_lakehouse_path_by_keyword("gold")
 
 # METADATA ********************
 
