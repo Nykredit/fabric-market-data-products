@@ -1,0 +1,5 @@
+# Forces Windows style line-endings
+* text=auto eol=crlf
+
+# Use Unix style line-endings for shell scripts
+*.sh text eol=lf
